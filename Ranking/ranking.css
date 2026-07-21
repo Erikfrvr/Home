@@ -1,0 +1,137 @@
+.ranking-main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 150px 6% 80px;
+}
+
+.ranking-card {
+  width: 100%;
+  max-width: 1100px;
+  padding: 40px;
+}
+
+.ranking-card .center {
+  margin-bottom: 34px;
+}
+
+.pesquisa {
+  margin-bottom: 26px;
+}
+
+.pesquisa input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 3px solid var(--senac-blue-deep);
+  background: var(--panel-2);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color .2s;
+}
+
+.pesquisa input::placeholder {
+  color: var(--text-dim);
+}
+
+.pesquisa input:focus {
+  border-color: var(--senac-orange);
+}
+
+.tabela {
+  overflow-x: auto;
+  margin-bottom: 30px;
+  padding: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+thead {
+  background: var(--senac-blue);
+}
+
+thead th {
+  padding: 14px;
+  text-align: center;
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  color: var(--text);
+  border-bottom: 3px solid var(--pixel-shadow);
+}
+
+tbody tr {
+  transition: background .2s;
+  border-bottom: 1px solid var(--senac-blue-deep);
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(0, 42, 74, 0.35);
+}
+
+tbody tr:hover {
+  background: rgba(247, 148, 29, 0.12);
+}
+
+tbody td {
+  padding: 14px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: var(--text-dim);
+}
+
+tbody td.vazio {
+  padding: 30px;
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+.btn-excluir {
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  color: var(--text);
+  background: var(--senac-orange);
+  border: 3px solid var(--pixel-shadow);
+  padding: 8px 12px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--pixel-shadow);
+  transition: transform .1s, box-shadow .1s;
+}
+
+.btn-excluir:hover {
+  color: var(--pixel-shadow);
+}
+
+.btn-excluir:active {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--senac-orange);
+}
+
+@media (max-width: 860px) {
+  .ranking-card {
+    padding: 26px;
+  }
+}
