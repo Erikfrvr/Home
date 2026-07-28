@@ -70,6 +70,20 @@ document
     }
 
     // --------------------------
+    // CONFIRMAR SALVAMENTO
+    // --------------------------
+
+    const confirmar = confirm(
+        "Deseja salvar as informações da equipe?\n\n" +
+        "Clique em Ok para Salvar.\n" +
+        "Clique em Cancelar para alterar alguma informação."
+    );
+
+    if(!confirmar){
+        return;
+    }
+
+    // --------------------------
     // GERAR ID
     // --------------------------
 
