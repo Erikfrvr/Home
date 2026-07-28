@@ -4,37 +4,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap');
 
-/* =======================================================
-   VARIÁVEIS
-======================================================= */
-
-:root{
-    --bg:#071522;
-    --senac-blue:#004A8D;
-    --senac-blue-deep:#00284a;
-    --panel:rgba(0,32,58,.88);
-    --panel-solid:#0b2036;
-    --panel-2:rgba(0,42,74,.9);
-    --senac-orange:#F7941D;
-    --senac-orange-light:#FDC180;
-    --pixel-shadow:#00101c;
-    --text:#eef3f8;
-    --text-dim:#9fb8d1;
-
-    --font-pixel:'Press Start 2P', monospace;
-    --font-body:'Pixelify Sans', monospace;
-}
-
-/* =======================================================
-   RESET
-======================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
 body{
     min-height:100vh;
     background:var(--bg);
