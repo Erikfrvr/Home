@@ -38,6 +38,13 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+.personagem-mecanica {
+  width: 240px;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* centraliza, já que a section usa .center */
+}
+
 .bg-video {
   position: fixed;
   inset: 0;
