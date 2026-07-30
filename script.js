@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  if (!window.location.hash) {
+    history.replaceState(null, "", "#home");
+  }
+
   try {
     document.querySelectorAll('.mechanic-img').forEach(img => {
       img.addEventListener('error', () => {
@@ -169,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (roster.length && fighterModel && fighterModelWrap && fighterFallback && fighterName && fighterRole && fighterIndex && fighterBadge && fighterEnter) {
       let currentIndex = 0;
 
-      function selectFighter(index, { focus = false } = {}) {
+      function selectFighter(index, { focus = false, scroll = true } = {}) {
         const item = roster[index];
         if (!item) return;
         currentIndex = index;
@@ -180,7 +184,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         item.classList.add('is-active');
         item.setAttribute('aria-selected', 'true');
-        item.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        if (scroll) {
+          item.scrollIntoView({
+            behavior: 'smooth',
+            inline: 'center',
+            block: 'nearest'
+          });
+        }
         if (focus) item.focus();
 
         const { name, role, model, page, badge } = item.dataset;
@@ -234,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      selectFighter(0);
+      selectFighter(0, { scroll: false });
     }
   } catch (err) {}
 
