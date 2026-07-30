@@ -6,8 +6,10 @@
 <title>MotionVerse</title>
 <meta name="description" content="MotionVerse: uma aventura controlada por motion capture em tempo real, desenvolvida em turma no Senac.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ajax.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 <body>
@@ -49,7 +51,7 @@ Motion<em>Verse</em>
 <svg viewBox="0 0 300 300"><circle class="rune-ring" cx="150" cy="150" r="138" /><circle class="rune-ring-2" cx="150" cy="150" r="105" /><circle class="rune-ring" cx="150" cy="150" r="72" /><rect x="284.0" y="146.0" width="8" height="8" class="rune-tick" /><rect x="273.5" y="198.8" width="8" height="8" class="rune-tick" /><rect x="243.6" y="243.6" width="8" height="8" class="rune-tick" /><rect x="198.8" y="273.5" width="8" height="8" class="rune-tick" /><rect x="146.0" y="284.0" width="8" height="8" class="rune-tick" /><rect x="93.2" y="273.5" width="8" height="8" class="rune-tick" /><rect x="48.4" y="243.6" width="8" height="8" class="rune-tick" /><rect x="18.5" y="198.8" width="8" height="8" class="rune-tick" /><rect x="8.0" y="146.0" width="8" height="8" class="rune-tick" /><rect x="18.5" y="93.2" width="8" height="8" class="rune-tick" /><rect x="48.4" y="48.4" width="8" height="8" class="rune-tick" /><rect x="93.2" y="18.5" width="8" height="8" class="rune-tick" /><rect x="146.0" y="8.0" width="8" height="8" class="rune-tick" /><rect x="198.8" y="18.5" width="8" height="8" class="rune-tick" /><rect x="243.6" y="48.4" width="8" height="8" class="rune-tick" /><rect x="273.5" y="93.2" width="8" height="8" class="rune-tick" /></svg>
 </div>
 <div class="hero-model-wrap" id="heroModelWrap">
-<model-viewer id="heroModel" src="avatars/heroi.glb" alt="Herói do jogo" auto-rotate rotation-per-second="10deg" camera-controls disable-zoom shadow-intensity="0" exposure="1.1"></model-viewer>
+<model-viewer id="heroModel" src="avatars/heroi.glb" alt="Herói do jogo" auto-rotate rotation-per-second="10deg" camera-controls disable-zoom shadow-intensity="0" exposure="1.1" power-preference="high-performance"></model-viewer>
 <div class="avatar-fallback" id="heroFallback"><div class="ring"></div><div class="initials">H</div><small>modelo 3D do herói pendente</small></div>
 </div>
 </div>
@@ -74,28 +76,36 @@ Motion<em>Verse</em>
 <p class="section-desc">Quatro gestos simples controlam a aventura.</p>
 </div>
 
-<div class="mechanics-grid" style="margin-top: 12px;">
+<div class="mechanics-grid">
 <div class="mechanic-card pixel-panel reveal-zoom">
 <span class="mechanic-step">Gesto 01</span>
-<svg class="mechanic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21V11M9 11V5a1.5 1.5 0 013 0v6M12 11V4a1.5 1.5 0 013 0v7M15 11V6a1.5 1.5 0 013 0v9a5 5 0 01-5 5H10a5 5 0 01-4-2l-2.5-3.5a1.4 1.4 0 012-2L7 14"/></svg>
+<div class="mechanic-media">
+<img src="assets/movimentos/gesto-01.png" alt="Mão Aberta" class="mechanic-img">
+</div>
 <h3>Mão Aberta</h3>
 <p>Move para cima.</p>
 </div>
 <div class="mechanic-card pixel-panel reveal-zoom">
 <span class="mechanic-step">Gesto 02</span>
-<svg class="mechanic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 12V7a1.5 1.5 0 013 0M10 12V6a1.5 1.5 0 013 0v6M13 12V7a1.5 1.5 0 013 0v5M16 12a1.5 1.5 0 013 0v3a5 5 0 01-5 5h-3a5 5 0 01-4-2l-2.5-3.5a1.4 1.4 0 012-2L7 14"/></svg>
+<div class="mechanic-media">
+<img src="assets/movimentos/gesto-02.png" alt="Fechar Mão" class="mechanic-img">
+</div>
 <h3>Fechar Mão</h3>
 <p>Move para baixo.</p>
 </div>
 <div class="mechanic-card pixel-panel reveal-zoom">
 <span class="mechanic-step">Gesto 03</span>
-<svg class="mechanic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h16M13 6l6 6-6 6"/></svg>
+<div class="mechanic-media">
+<img src="assets/movimentos/gesto-03.png" alt="Mão para a Direita" class="mechanic-img">
+</div>
 <h3>Mão para a Direita</h3>
 <p>Move para a Direita.</p>
 </div>
 <div class="mechanic-card pixel-panel reveal-zoom">
 <span class="mechanic-step">Gesto 04</span>
-<svg class="mechanic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12H5M11 6l-6 6 6 6"/></svg>
+<div class="mechanic-media">
+<img src="assets/movimentos/gesto-04.png" alt="Mão para a Esquerda" class="mechanic-img">
+</div>
 <h3>Mão para a Esquerda</h3>
 <p>Move para a Esquerda.</p>
 </div>
@@ -111,7 +121,7 @@ Motion<em>Verse</em>
 
 <div class="trailer-frame pixel-panel reveal-zoom" id="trailerFrame" role="button" tabindex="0" aria-label="Assistir demonstração">
 <span class="trailer-tag"><span class="rec-dot" aria-hidden="true"></span>Preview</span>
-<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80" alt="Cena de gameplay do MotionVerse">
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80" alt="Cena de gameplay do MotionVerse" loading="lazy" decoding="async">
 <span class="play-btn" aria-hidden="true">▶</span>
 </div>
 </section>
@@ -123,6 +133,7 @@ Motion<em>Verse</em>
 </div>
 </div>
 
+<section id="equipe">
     <div class="center reveal">
     <span class="section-label">A Companhia</span>
     <h2 class="section-title">Escolha um Integrante</h2>
@@ -133,7 +144,7 @@ Motion<em>Verse</em>
     
     <div class="fighter-stage pixel-panel" id="fighterStage">
     <div class="fighter-model" id="fighterModelWrap">
-    <model-viewer id="fighterModel" src="modelos/Professor.glb" alt="Avatar selecionado" auto-rotate rotation-per-second="18deg" camera-controls disable-zoom shadow-intensity="1" exposure="1"></model-viewer>
+    <model-viewer id="fighterModel" src="modelos/Professor.glb" alt="Avatar selecionado" auto-rotate rotation-per-second="18deg" camera-controls disable-zoom shadow-intensity="0.3" exposure="1" power-preference="high-performance"></model-viewer>
     <div class="avatar-fallback" id="fighterFallback"><div class="ring"></div><div class="initials">M</div><small>modelo 3D pendente</small></div>
     </div>
     
@@ -152,155 +163,169 @@ Motion<em>Verse</em>
     <div class="roster" id="roster" role="listbox" aria-label="Selecionar integrante da equipe">
     
       <button class="roster-item is-active" type="button" data-index="0"
+        data-name="Professor" data-role="Rogerio Sobral" data-badge="Mestre"
         data-model="modelos/Professor.glb" data-page="curriculos/professor/index.html"
         role="option" aria-selected="true">
         <span class="roster-master" aria-hidden="true"></span>
         <span class="roster-thumb">
-          <model-viewer src="modelos/Professor.glb" alt="Avatar do Professor"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/Professor.glb" alt="Avatar do Professor" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">M</span>
         </span>
         <span class="roster-name">Professor</span>
       </button>
     
       <button class="roster-item" type="button" data-index="1"
+        data-name="Aluno 01" data-role="CESAR DE OLIVEIRA ZANELATTO" data-badge="Back-End"
         data-model="modelos/cesar.glb" data-page="..\curriculos\cesar\curriculo\cesar.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/cesar.glb" alt="Avatar de Aluno 01"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/cesar.glb" alt="Avatar de Aluno 01" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">01</span>
         </span>
         <span class="roster-name">Aluno 01</span>
       </button>
     
       <button class="roster-item" type="button" data-index="2"
+        data-name="Aluno 02" data-role="DAIANE DUARTE DOS SANYOS" data-badge="Front-End"
         data-model="modelos/Dai.glb" data-page="..\curriculos/daiane/daiane.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/Dai.glb" alt="Avatar de Aluno 02"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/Dai.glb" alt="Avatar de Aluno 02" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">02</span>
         </span>
         <span class="roster-name">Aluno 02</span>
       </button>
     
       <button class="roster-item" type="button" data-index="3"
+        data-name="Aluno 03" data-role="ERIK MAURICIO SILVA" data-badge="Front-End"
         data-model="modelos/erik.glb" data-page="curriculos/erik/index.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/erik.glb" alt="Avatar de Aluno 03"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/erik.glb" alt="Avatar de Aluno 03" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">03</span>
         </span>
         <span class="roster-name">Aluno 03</span>
       </button>
     
       <button class="roster-item" type="button" data-index="4"
+        data-name="Aluno 04" data-role="GABRIEL ROBERTO ROSSI" data-badge="Front-End"
         data-model="modelos/Gabriel.glb" data-page="..\curriculos/gabriel/gabriel.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/Gabriel.glb" alt="Avatar de Aluno 04"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/Gabriel.glb" alt="Avatar de Aluno 04" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">04</span>
         </span>
         <span class="roster-name">Aluno 04</span>
       </button>
     
       <button class="roster-item" type="button" data-index="5"
+        data-name="Aluno 05" data-role="HEBERT CRISTIAN SILVA DA CRUZ" data-badge="Front-End"
         data-model="modelos/heber.glb" data-page="curriculos/hebert/index.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/heber.glb" alt="Avatar de Aluno 05"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/heber.glb" alt="Avatar de Aluno 05" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">05</span>
         </span>
         <span class="roster-name">Aluno 05</span>
       </button>
     
       <button class="roster-item" type="button" data-index="6"
+        data-name="Aluno 06" data-role="KLEBER AMARO DA SILVA" data-badge="Back-End"
         data-model="modelos/kleber.glb" data-page="..\curriculos\kleb\pages\kleber.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/kleber.glb" alt="Avatar de Aluno 06"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/kleber.glb" alt="Avatar de Aluno 06" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">06</span>
         </span>
         <span class="roster-name">Aluno 06</span>
       </button>
     
       <button class="roster-item" type="button" data-index="7"
+        data-name="Aluno 07" data-role="LEANDRO CAVALCANTE CHAVES DA MATA" data-badge="Back-End"
         data-model="modelos/leandro.glb" data-page="curriculos/leandro/index.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/leandro.glb" alt="Avatar de Aluno 07"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/leandro.glb" alt="Avatar de Aluno 07" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">07</span>
         </span>
         <span class="roster-name">Aluno 07</span>
       </button>
     
       <button class="roster-item" type="button" data-index="8"
+        data-name="Aluno 08" data-role="LEONARDO DIAS DA SILVA" data-badge="Back-End"
         data-model="modelos/Leo.glb" data-page="curriculos/leonardo/index.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/Leo.glb" alt="Avatar de Aluno 08"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/Leo.glb" alt="Avatar de Aluno 08" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">08</span>
         </span>
         <span class="roster-name">Aluno 08</span>
       </button>
     
       <button class="roster-item" type="button" data-index="9"
+        data-name="Aluno 09" data-role="LYSS KEURY GOMES BELLO DA MOTTA" data-badge="Front-End"
         data-model="modelos/Lyss.glb" data-page="curriculos/lyss/index.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/Lyss.glb" alt="Avatar de Aluno 09"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/Lyss.glb" alt="Avatar de Aluno 09" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">09</span>
         </span>
         <span class="roster-name">Aluno 09</span>
       </button>
     
       <button class="roster-item" type="button" data-index="10"
+        data-name="Aluno 10" data-role="RAFAEL SILVA GOMES" data-badge="Front-End"
         data-model="modelos/Rafael Gomes.glb" data-page="..\curriculos\rafael-gomes\curriculo.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/Rafael Gomes.glb" alt="Avatar de Aluno 10"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/Rafael Gomes.glb" alt="Avatar de Aluno 10" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">10</span>
         </span>
         <span class="roster-name">Aluno 10</span>
       </button>
     
       <button class="roster-item" type="button" data-index="11"
+        data-name="Aluno 11" data-role="RAFAEL SPER MORALLI" data-badge="Front-End"
         data-model="modelos/Rafael mora.glb" data-page="..\curriculos\rafael\page\page.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/Rafael mora.glb" alt="Avatar de Aluno 11"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/Rafael mora.glb" alt="Avatar de Aluno 11" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">11</span>
         </span>
         <span class="roster-name">Aluno 11</span>
       </button>
     
       <button class="roster-item" type="button" data-index="12"
+        data-name="Aluno 12" data-role="RAISSA MICHELY GUTIERREZ QUISPE" data-badge="Front-End"
         data-model="modelos/Raissa.glb" data-page="curriculos/raissa/index.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/Raissa.glb" alt="Avatar de Aluno 12"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/Raissa.glb" alt="Avatar de Aluno 12" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">12</span>
         </span>
         <span class="roster-name">Aluno 12</span>
       </button>
     
       <button class="roster-item" type="button" data-index="13"
+        data-name="Aluno 13" data-role="VICTOR JATOBA ALCANTARA BATISTA" data-badge="Back-End"
         data-model="modelos/Victor.glb" data-page="curriculos/victor/index.html"
         role="option" aria-selected="false">
         <span class="roster-thumb">
-          <model-viewer src="modelos/Victor.glb" alt="Avatar de Aluno 13"
-            auto-rotate camera-controls disable-zoom disable-pan></model-viewer>
+          <model-viewer src="modelos/Victor.glb" alt="Avatar de Aluno 13" loading="lazy" shadow-intensity="0"
+            disable-zoom disable-pan></model-viewer>
           <span class="thumb-fallback">13</span>
         </span>
         <span class="roster-name">Aluno 13</span>
@@ -315,6 +340,6 @@ Motion<em>Verse</em>
 <p>Projeto desenvolvido no Senac</p>
 </footer>
 
-<script src="script.js" defer></script>
+<script src="script.js?v=3" defer></script>
 </body>
 </html>
