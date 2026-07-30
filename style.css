@@ -882,4 +882,26 @@ footer .foot-accent { color: var(--senac-orange); }
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+
+}
+.sprite-hand {
+  width: 64px;
+  height: 64px;
+  background-image: url('assets/maofechada.png');
+  background-repeat: no-repeat;
+  background-size: 256px 64px; 
+  image-rendering: pixelated;
+}
+
+.sprite-static {
+  background-position: 0 0;
+}
+
+.sprite-anim {
+  animation: fechar_punho 1.2s steps(3) infinite alternate;
+}
+
+@keyframes fechar_punho {
+  from { background-position: 0 0; }      
+  to   { background-position: -192px 0; }
 }
