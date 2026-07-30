@@ -46,6 +46,26 @@ button:focus-visible {
   background: var(--bg);
 }
 
+.personagem-mecanica {
+  width: 200px;
+  max-width: 40%;
+  height: auto;
+  display: block;
+  margin: 50px auto 0;
+  object-fit: contain;
+  animation: float-personagem 4s ease-in-out infinite;
+}
+
+@keyframes float-personagem {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .personagem-mecanica {
+    animation: none;
+  }
+}
 .bg-video video {
   position: absolute;
   inset: 0;
@@ -337,7 +357,7 @@ button:focus-visible {
   position: relative;
   z-index: 5;
   text-align: center;
-  max-width: 760px;
+  max-width: clamp(760px, 60vw, 1100px);
   margin: 10px auto 0;
 }
 
@@ -377,7 +397,7 @@ button:focus-visible {
   color: var(--text-dim);
   font-size: 1.15rem;
   line-height: 1.7;
-  max-width: 540px;
+  max-width: clamp(540px, 45vw, 780px);
   margin: 0 auto 34px;
 }
 
@@ -458,7 +478,7 @@ section {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
-  max-width: 1200px;
+  max-width: min(1500px, 92%);
   margin: 0 auto;
 }
 
@@ -512,7 +532,7 @@ section {
 }
 
 .trailer-frame {
-  max-width: 900px;
+  max-width: min(1200px, 90%);
   margin: 0 auto;
   overflow: hidden;
   position: relative;
@@ -638,7 +658,7 @@ section {
   justify-content: center;
 }
 
-.select-wrap { max-width: 1000px; margin: 0 auto; }
+.select-wrap { max-width: min(1300px, 92%); }
 
 .fighter-stage {
   padding: 40px;
