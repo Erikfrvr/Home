@@ -658,7 +658,11 @@ section {
   justify-content: center;
 }
 
-.select-wrap { max-width: min(1300px, 92%); }
+.select-wrap {
+  max-width: min(1300px, 92%);
+  width: 100%;
+  margin: 0 auto;
+}
 
 .fighter-stage {
   padding: 40px;
