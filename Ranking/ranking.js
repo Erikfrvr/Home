@@ -31,7 +31,7 @@ function carregarRanking() {
   if (ranking.length === 0) {
     const tr = document.createElement("tr");
     const td = document.createElement("td");
-    td.colSpan = 7;
+    td.colSpan = 9;
     td.className = "vazio";
     td.textContent = "Nenhuma equipe cadastrada.";
     tr.appendChild(td);
@@ -49,6 +49,8 @@ function carregarRanking() {
     tr.appendChild(criarCelula(jogadores[1]));
     tr.appendChild(criarCelula(jogadores[2]));
     tr.appendChild(criarCelula(jogadores[3]));
+    tr.appendChild(criarCelula(equipe.pontuacao || 0));
+    tr.appendChild(criarCelula(equipe.tempo || "00:00"));
 
     const tdAcoes = document.createElement("td");
     const btn = document.createElement("button");
