@@ -182,3 +182,44 @@ document
     window.location.href = "../index.html";
 
 });
+
+// ------------------------------
+// VAGALUMES
+// ------------------------------
+
+const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
+
+try {
+    const firefliesWrap = document.getElementById("fireflies");
+
+    if (firefliesWrap && !prefersReducedMotion) {
+
+        const COUNT = 20;
+
+        for (let i = 0; i < COUNT; i++) {
+
+            const f = document.createElement("span");
+            f.className = "firefly";
+
+            const startX = Math.random() * 100;
+            const startY = 20 + Math.random() * 70;
+            const dx = (Math.random() - 0.5) * 160;
+            const dy = -(60 + Math.random() * 140);
+            const duration = 6 + Math.random() * 8;
+            const delay = Math.random() * 8;
+
+            f.style.left = `${startX}%`;
+            f.style.top = `${startY}%`;
+            f.style.setProperty("--dx", `${dx}px`);
+            f.style.setProperty("--dy", `${dy}px`);
+            f.style.animationDuration = `${duration}s`;
+            f.style.animationDelay = `${delay}s`;
+
+            firefliesWrap.appendChild(f);
+        }
+    }
+} catch (err) {
+    console.error(err);
+}
