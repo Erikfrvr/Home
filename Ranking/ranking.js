@@ -1,6 +1,9 @@
 const corpoTabela = document.getElementById("corpoTabela");
 const pesquisa = document.getElementById("pesquisa");
 const btnLimpar = document.getElementById("btnLimpar");
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
 
 function obterRanking() {
   try {
