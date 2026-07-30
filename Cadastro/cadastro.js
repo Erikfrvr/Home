@@ -1,5 +1,5 @@
 /* ==========================================
-   CASA ABERTA
+   Motion Verse
    cadastro.js
 ========================================== */
 
@@ -52,15 +52,15 @@ document
     if(
 
         equipe === "" ||
-
-        jogador1 === "" ||
-
-        jogador2 === "" ||
-
-        jogador3 === "" ||
-
-        jogador4 === ""
-
+    
+        jogador1.value.trim() === "" ||
+    
+        jogador2.value.trim() === "" ||
+    
+        jogador3.value.trim() === "" ||
+    
+        jogador4.value.trim() === ""
+    
     ){
 
         alert("Preencha todos os campos!");
@@ -95,22 +95,26 @@ document
 
     const novaEquipe = {
 
-        id:id,
-
-        equipe:equipe,
-
+        id: id,
+    
+        equipe: equipe,
+    
         jogadores:[
-
-            jogador1,
-
-            jogador2,
-
-            jogador3,
-
-            jogador4
-
-        ]
-
+    
+            jogador1.value.trim(),
+    
+            jogador2.value.trim(),
+    
+            jogador3.value.trim(),
+    
+            jogador4.value.trim()
+    
+        ],
+    
+        pontuacao: 0,
+    
+        tempo: "00:00"
+    
     };
 
     // --------------------------
