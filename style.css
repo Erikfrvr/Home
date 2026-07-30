@@ -902,7 +902,7 @@ footer .foot-accent { color: var(--senac-orange); }
 }
 
 .sprite-anim {
-  animation: fechar_punho 1.2s steps(3) infinite alternate;
+  animation: fechar_punho 0.5s steps(3) infinite alternate;
 }
 
 @keyframes fechar_punho {
