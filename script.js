@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
               'active',
               a.getAttribute('href') === `#${entry.target.id}`
             ));
+            history.replaceState(null, "", `#${entry.target.id}`);
           }
         });
       }, { threshold: 0.5 });
