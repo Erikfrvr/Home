@@ -65,7 +65,7 @@ function carregarRanking() {
 }
 
 function excluirEquipe(indice) {
-  const senhaCorreta = "1234"; // Altere para a senha que desejar
+  const senhaCorreta = "Senacsala21@"; // Altere para a senha que desejar
 
   const senha = prompt("Digite a senha para excluir esta equipe:");
 
@@ -88,7 +88,7 @@ function excluirEquipe(indice) {
 }
 
 btnLimpar.addEventListener("click", () => {
-  const senhaCorreta = "1234"; // Mesma senha
+  const senhaCorreta = "Senacsala21@"; // Mesma senha
 
   const senha = prompt("Digite a senha para limpar o ranking:");
 
