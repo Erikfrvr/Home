@@ -43,7 +43,7 @@ function carregarRanking() {
     const tr = document.createElement("tr");
     const jogadores = Array.isArray(equipe.jogadores) ? equipe.jogadores : [];
 
-    tr.appendChild(criarCelula(equipe.id));
+    
     tr.appendChild(criarCelula(equipe.equipe));
     tr.appendChild(criarCelula(jogadores[0]));
     tr.appendChild(criarCelula(jogadores[1]));
