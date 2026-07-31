@@ -424,7 +424,7 @@ button:focus-visible {
 .scroll-cue::after {
   content: '';
   width: 4px;
-  height: 30px;
+  height: 150px;
   background: var(--senac-orange);
   animation: scrollcue 1.4s steps(4) infinite;
 }
