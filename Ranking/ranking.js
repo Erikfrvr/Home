@@ -65,6 +65,19 @@ function carregarRanking() {
 }
 
 function excluirEquipe(indice) {
+  const senhaCorreta = "1234"; // Altere para a senha que desejar
+
+  const senha = prompt("Digite a senha para excluir esta equipe:");
+
+  if (senha === null) {
+    return; // Usuário cancelou
+  }
+
+  if (senha !== senhaCorreta) {
+    alert("Senha incorreta!");
+    return;
+  }
+
   const confirmar = confirm("Deseja excluir esta equipe?");
   if (!confirmar) return;
 
@@ -75,6 +88,19 @@ function excluirEquipe(indice) {
 }
 
 btnLimpar.addEventListener("click", () => {
+  const senhaCorreta = "1234"; // Mesma senha
+
+  const senha = prompt("Digite a senha para limpar o ranking:");
+
+  if (senha === null) {
+    return;
+  }
+
+  if (senha !== senhaCorreta) {
+    alert("Senha incorreta!");
+    return;
+  }
+
   const confirmar = confirm("Deseja apagar TODAS as equipes?");
   if (!confirmar) return;
 
