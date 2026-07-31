@@ -183,3 +183,127 @@ header p{
         width:100%;
     }
 }
+
+/* =======================================================
+   MODAL
+======================================================= */
+
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.7);
+
+    z-index:999;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+.modal-conteudo{
+
+    width:400px;
+
+    background:var(--panel);
+
+    border:3px solid var(--senac-orange);
+
+    padding:30px;
+
+    text-align:center;
+
+
+    box-shadow:
+    6px 6px 0 var(--pixel-shadow),
+    inset 0 0 0 3px var(--senac-blue-deep);
+
+
+    animation:abrirModal .2s ease;
+
+}
+
+
+
+.modal-conteudo h2{
+
+    font-family:var(--font-pixel);
+
+    font-size:.8rem;
+
+    color:var(--senac-orange);
+
+    margin-bottom:20px;
+
+}
+
+
+
+.modal-conteudo p{
+
+    color:var(--text);
+
+    margin-bottom:25px;
+
+}
+
+
+
+.modal-botoes{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+}
+
+
+
+@keyframes abrirModal{
+
+    from{
+
+        transform:scale(.7);
+
+        opacity:0;
+
+    }
+
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+@media(max-width:600px){
+
+    .modal-conteudo{
+
+        width:80%;
+
+    }
+
+
+    .modal-botoes{
+
+        flex-direction:column;
+
+    }
+
+}

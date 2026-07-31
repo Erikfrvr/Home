@@ -153,6 +153,120 @@ tbody td.vazio {
   background: var(--senac-orange);
 }
 
+/* =======================================================
+   MODAIS
+======================================================= */
+
+
+.modal{
+
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,.7);
+
+  z-index:999;
+
+  justify-content:center;
+
+  align-items:center;
+
+}
+
+
+
+.modal-conteudo{
+
+  width:380px;
+
+  background:var(--panel);
+
+  border:3px solid var(--senac-orange);
+
+  padding:30px;
+
+  text-align:center;
+
+  box-shadow:
+  6px 6px 0 var(--pixel-shadow),
+  inset 0 0 0 3px var(--senac-blue-deep);
+
+}
+
+
+
+.modal-conteudo h2{
+
+  font-family:var(--font-pixel);
+
+  color:var(--senac-orange);
+
+  font-size:.8rem;
+
+  margin-bottom:20px;
+
+}
+
+
+
+.modal-conteudo p{
+
+  margin-bottom:20px;
+
+}
+
+
+
+.modal-conteudo input{
+
+  width:100%;
+
+  padding:12px;
+
+  margin-bottom:20px;
+
+  border:3px solid var(--senac-blue);
+
+  background:var(--panel-solid);
+
+  color:var(--text);
+
+}
+
+
+
+.modal-botoes{
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:20px;
+
+}
+
+
+
+@media(max-width:600px){
+
+  .modal-conteudo{
+
+      width:80%;
+
+  }
+
+
+  .modal-botoes{
+
+      flex-direction:column;
+
+  }
+
+}
+
 @media (max-width: 860px) {
   .ranking-card {
     padding: 26px;
