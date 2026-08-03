@@ -368,6 +368,14 @@ function(){
 // MODAIS
 // ======================================================
 
+const btnConfirmarSenha =
+document.getElementById("btnConfirmarSenha");
+
+const btnConfirmarConfirmacao =
+document.getElementById("btnConfirmarConfirmacao");
+
+const btnFecharMensagem =
+document.getElementById("btnFecharMensagem");
 
 function solicitarSenha(funcao){
 
@@ -576,7 +584,42 @@ function(){
 
 });
 
+// ======================================================
+// ENTER = BOTÃO SIM / CONFIRMAR
+// ======================================================
 
+document.addEventListener("keydown", function(event){
+
+    if(event.key !== "Enter") return;
+
+    // Modal da senha
+    if(document.getElementById("modalSenha").style.display === "flex"){
+
+        event.preventDefault();
+
+        btnConfirmarSenha.click();
+
+    }
+
+    // Modal de confirmação
+    else if(document.getElementById("modalConfirmar").style.display === "flex"){
+
+        event.preventDefault();
+
+        btnConfirmarConfirmacao.click();
+
+    }
+
+    // Modal de mensagem
+    else if(document.getElementById("modalMensagem").style.display === "flex"){
+
+        event.preventDefault();
+
+        btnFecharMensagem.click();
+
+    }
+
+});
 
 
 
