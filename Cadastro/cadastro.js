@@ -393,9 +393,35 @@ btnFecharSucesso.addEventListener("click",function(){
 });
 
 
+// ======================================================
+// ENTER = BOTÃO SIM
+// ======================================================
 
+document.addEventListener("keydown", function(event){
 
+    if(event.key !== "Enter") return;
 
+    // Se o modal de confirmação estiver aberto,
+    // o Enter equivale ao botão "Sim".
+    if(modal.style.display === "flex"){
+
+        event.preventDefault();
+
+        btnConfirmarModal.click();
+
+    }
+
+    // Se o modal de sucesso estiver aberto,
+    // o Enter equivale ao botão "Fechar".
+    else if(modalSucesso.style.display === "flex"){
+
+        event.preventDefault();
+
+        btnFecharSucesso.click();
+
+    }
+
+});
 
 
 // ------------------------------
