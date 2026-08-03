@@ -583,12 +583,58 @@ button:focus-visible {
   gap: 10px;
 }
 
+/* Linha */
 .scroll-cue::after {
-  content: '';
+  content: "";
   width: 4px;
-  height: 150px;
+  height: 200px;
   background: var(--senac-orange);
-  animation: scrollcue 1.4s steps(4) infinite;
+
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+
+/* Seta */
+.scroll-cue::before {
+  content: "▼";
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+
+  font-size: 38px;
+  color: var(--senac-orange);
+
+  transform: translateX(-50%);
+
+  animation: arrowPulse 2s ease-in-out infinite;
+}
+
+
+/* Animação da linha */
+@keyframes scrollPulse {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translateY(12px);
+    opacity: 1;
+  }
+}
+
+
+/* Animação da seta */
+@keyframes arrowPulse {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(12px);
+    opacity: 1;
+  }
 }
 
 @keyframes scrollcue {
