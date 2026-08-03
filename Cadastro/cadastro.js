@@ -142,52 +142,6 @@ function salvarEquipe(){
     nomeEquipe.value.trim();
 
 
-
-    // --------------------------
-    // GERAR ID
-    // --------------------------
-
-    const id = gerarIdEquipe();
-
-
-
-    // --------------------------
-    // OBJETO DA EQUIPE
-    // --------------------------
-
-    const novaEquipe = {
-
-
-        id:id,
-
-
-        equipe:equipe,
-
-
-        jogadores:[
-
-            jogador1.value.trim(),
-
-            jogador2.value.trim(),
-
-            jogador3.value.trim(),
-
-            jogador4.value.trim()
-
-        ],
-
-
-        pontuacao:0,
-
-
-        tempo:"00:00"
-
-
-    };
-
-
-
-
     // --------------------------
     // PEGAR RANKING EXISTENTE
     // --------------------------
@@ -218,35 +172,145 @@ function salvarEquipe(){
     if(existeEquipe){
 
 
-        alert("Já existe uma equipe com esse nome.");
-
-
+        abrirModalEquipeExistente();
+    
+    
         return;
-
-
+    
+    
     }
 
+    // --------------------------
+    // GERAR ID APÓS VALIDAR NOME
+    // --------------------------
+
+    const id = gerarIdEquipe();
 
 
 
 
     // --------------------------
-    // SALVAR
+    // OBJETO DA EQUIPE
     // --------------------------
 
-    ranking.push(novaEquipe);
+    const novaEquipe = { 
+
+        id:id,
+
+        equipe:equipe,
+
+        fase:1,
+
+        pontuacao:0,
+
+        tempo:"00:00",
+
+        jogadores:[
+
+            {
+                id:1,
+
+                nome:jogador1.value.trim(),
+
+                funcao:"frente",
+
+                camera:{
+                    id:null,
+                    nome:""
+                },
+
+                gesto:"fechada",
+
+                status:"parado"
+            },
+
+
+            {
+                id:2,
+
+                nome:jogador2.value.trim(),
+
+                funcao:"tras",
+
+                camera:{
+                    id:null,
+                    nome:""
+                },
+
+                gesto:"fechada",
+
+                status:"parado"
+            },
+
+
+            {
+                id:3,
+
+                nome:jogador3.value.trim(),
+
+                funcao:"baixo",
+
+                camera:{
+                    id:null,
+                    nome:""
+                },
+
+                gesto:"fechada",
+
+                status:"parado"
+            },
+
+
+            {
+                id:4,
+
+                nome:jogador4.value.trim(),
+
+                funcao:"cima",
+
+                camera:{
+                    id:null,
+                    nome:""
+                },
+
+                gesto:"fechada",
+
+                status:"parado"
+            }
+
+        ]
+
+    };
 
 
 
-    localStorage.setItem(
+        // --------------------------
+        // SALVAR
+        // --------------------------
 
-        "ranking",
-
-        JSON.stringify(ranking)
-
-    );
+        ranking.push(novaEquipe);
 
 
+
+        localStorage.setItem(
+
+            "ranking",
+
+            JSON.stringify(ranking)
+
+        );
+
+        // --------------------------
+        // SALVAR EQUIPE ATUAL
+        // --------------------------
+
+        localStorage.setItem(
+
+            "equipeAtual",
+
+            JSON.stringify(novaEquipe)
+
+        );
 
 
 
@@ -272,7 +336,7 @@ function salvarEquipe(){
 
 setTimeout(function(){
 
-    window.location.href = "../ranking/ranking.html";
+    window.location.href = "../pages/cameraSelector.html";
 
 }, 1500);
 
@@ -305,9 +369,11 @@ document.getElementById("btnCancelarModal");
 
 function abrirModal(){
 
+    if(modal){
 
-    modal.style.display="flex";
+        modal.style.display="flex";
 
+    }
 
 }
 
@@ -316,9 +382,11 @@ function abrirModal(){
 
 function fecharModal(){
 
+    if(modal){
 
-    modal.style.display="none";
+        modal.style.display="none";
 
+    }
 
 }
 
@@ -371,9 +439,11 @@ document.getElementById("btnFecharSucesso");
 
 function abrirModalSucesso(){
 
+    if(modalSucesso){
 
-    modalSucesso.style.display="flex";
+        modalSucesso.style.display="flex";
 
+    }
 
 }
 
@@ -383,9 +453,11 @@ function abrirModalSucesso(){
 
 function fecharModalSucesso(){
 
+    if(modalSucesso){
 
-    modalSucesso.style.display="none";
+        modalSucesso.style.display="none";
 
+    }
 
 }
 
@@ -401,6 +473,60 @@ btnFecharSucesso.addEventListener("click",function(){
 
 });
 
+// ======================================================
+// MODAL EQUIPE EXISTENTE
+// ======================================================
+
+
+const modalEquipeExistente =
+document.getElementById("modalEquipeExistente");
+
+
+const btnFecharEquipeExistente =
+document.getElementById("btnFecharEquipeExistente");
+
+
+
+
+function abrirModalEquipeExistente(){
+
+    if(modalEquipeExistente){
+
+        modalEquipeExistente.style.display="flex";
+
+    }
+
+}
+
+
+
+
+function fecharModalEquipeExistente(){
+
+    if(modalEquipeExistente){
+
+        modalEquipeExistente.style.display="none";
+
+    }
+
+}
+
+
+
+
+
+if(btnFecharEquipeExistente){
+
+    btnFecharEquipeExistente.addEventListener(
+    "click",
+    function(){
+
+        fecharModalEquipeExistente();
+
+    });
+
+}
+
 
 // ======================================================
 // ENTER = BOTÃO SIM
@@ -412,7 +538,7 @@ document.addEventListener("keydown", function(event){
 
     // Se o modal de confirmação estiver aberto,
     // o Enter equivale ao botão "Sim".
-    if(modal.style.display === "flex"){
+    if(modal && modal.style.display === "flex"){
 
         event.preventDefault();
 
@@ -422,7 +548,7 @@ document.addEventListener("keydown", function(event){
 
     // Se o modal de sucesso estiver aberto,
     // o Enter equivale ao botão "Fechar".
-    else if(modalSucesso.style.display === "flex"){
+    else if(modalSucesso && modalSucesso.style.display === "flex"){
 
         event.preventDefault();
 
