@@ -9,15 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://ajax.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=8">
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 <body>
 
 <div class="bg-video" id="bgVideo">
-<video id="heroVideo" autoplay muted loop playsinline poster="assets/video/floresta-poster.jpg">
-<source src="assets/video/floresta-loop.mp4" type="video/mp4">
-</video>
 <div class="bg-fireflies" id="fireflies" aria-hidden="true"></div>
 <div class="bg-overlay"></div>
 </div>
@@ -47,12 +44,81 @@ Motion<em>Verse</em>
 
 <header id="home" class="hero">
 <div class="hero-figure">
-<div class="rune-circle" aria-hidden="true">
-<svg viewBox="0 0 300 300"><circle class="rune-ring" cx="150" cy="150" r="138" /><circle class="rune-ring-2" cx="150" cy="150" r="105" /><circle class="rune-ring" cx="150" cy="150" r="72" /><rect x="284.0" y="146.0" width="8" height="8" class="rune-tick" /><rect x="273.5" y="198.8" width="8" height="8" class="rune-tick" /><rect x="243.6" y="243.6" width="8" height="8" class="rune-tick" /><rect x="198.8" y="273.5" width="8" height="8" class="rune-tick" /><rect x="146.0" y="284.0" width="8" height="8" class="rune-tick" /><rect x="93.2" y="273.5" width="8" height="8" class="rune-tick" /><rect x="48.4" y="243.6" width="8" height="8" class="rune-tick" /><rect x="18.5" y="198.8" width="8" height="8" class="rune-tick" /><rect x="8.0" y="146.0" width="8" height="8" class="rune-tick" /><rect x="18.5" y="93.2" width="8" height="8" class="rune-tick" /><rect x="48.4" y="48.4" width="8" height="8" class="rune-tick" /><rect x="93.2" y="18.5" width="8" height="8" class="rune-tick" /><rect x="146.0" y="8.0" width="8" height="8" class="rune-tick" /><rect x="198.8" y="18.5" width="8" height="8" class="rune-tick" /><rect x="243.6" y="48.4" width="8" height="8" class="rune-tick" /><rect x="273.5" y="93.2" width="8" height="8" class="rune-tick" /></svg>
+<div class="computer-frame" aria-hidden="true">
+<div class="monitor-body">
+<div class="monitor-screen">
+<div class="screen-vortex"></div>
+<div class="screen-pulse-ring"></div>
+<div class="screen-scanlines"></div>
+<div class="screen-glare"></div>
 </div>
+<span class="monitor-led"></span>
+</div>
+<div class="monitor-stand-neck"></div>
+<div class="monitor-stand-base"></div>
+</div>
+<svg class="pull-fx" viewBox="0 0 300 300" aria-hidden="true">
+<defs>
+<filter id="pullGlow" x="-200%" y="-200%" width="500%" height="500%">
+<feGaussianBlur stdDeviation="1.6" result="blur"></feGaussianBlur>
+<feMerge>
+<feMergeNode in="blur"></feMergeNode>
+<feMergeNode in="SourceGraphic"></feMergeNode>
+</feMerge>
+</filter>
+</defs>
+<circle r="2.4" fill="#FDC180" filter="url(#pullGlow)">
+<animateMotion dur="1.9s" begin="0s" repeatCount="indefinite" rotate="auto" path="M76,230 Q112,150 150,96"></animateMotion>
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.72;1" dur="1.9s" begin="0s" repeatCount="indefinite"></animate>
+</circle>
+<circle r="2" fill="#00A3FF" filter="url(#pullGlow)">
+<animateMotion dur="2.1s" begin="0.4s" repeatCount="indefinite" rotate="auto" path="M224,224 Q188,148 150,96"></animateMotion>
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.72;1" dur="2.1s" begin="0.4s" repeatCount="indefinite"></animate>
+</circle>
+<circle r="2.6" fill="#FDC180" filter="url(#pullGlow)">
+<animateMotion dur="2.3s" begin="0.9s" repeatCount="indefinite" rotate="auto" path="M96,260 Q118,170 150,96"></animateMotion>
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.72;1" dur="2.3s" begin="0.9s" repeatCount="indefinite"></animate>
+</circle>
+<circle r="1.8" fill="#00A3FF" filter="url(#pullGlow)">
+<animateMotion dur="1.7s" begin="1.2s" repeatCount="indefinite" rotate="auto" path="M204,258 Q184,168 150,96"></animateMotion>
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.72;1" dur="1.7s" begin="1.2s" repeatCount="indefinite"></animate>
+</circle>
+<circle r="2.2" fill="#FDC180" filter="url(#pullGlow)">
+<animateMotion dur="2s" begin="0.15s" repeatCount="indefinite" rotate="auto" path="M60,190 Q104,140 150,96"></animateMotion>
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.72;1" dur="2s" begin="0.15s" repeatCount="indefinite"></animate>
+</circle>
+<circle r="1.9" fill="#00A3FF" filter="url(#pullGlow)">
+<animateMotion dur="2.2s" begin="0.65s" repeatCount="indefinite" rotate="auto" path="M240,182 Q196,138 150,96"></animateMotion>
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.72;1" dur="2.2s" begin="0.65s" repeatCount="indefinite"></animate>
+</circle>
+<circle r="2.1" fill="#FDC180" filter="url(#pullGlow)">
+<animateMotion dur="1.85s" begin="1.55s" repeatCount="indefinite" rotate="auto" path="M52,140 Q96,116 150,96"></animateMotion>
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.72;1" dur="1.85s" begin="1.55s" repeatCount="indefinite"></animate>
+</circle>
+<circle r="1.7" fill="#00A3FF" filter="url(#pullGlow)">
+<animateMotion dur="2.05s" begin="0.3s" repeatCount="indefinite" rotate="auto" path="M250,138 Q204,114 150,96"></animateMotion>
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.72;1" dur="2.05s" begin="0.3s" repeatCount="indefinite"></animate>
+</circle>
+<circle r="2.3" fill="#FDC180" filter="url(#pullGlow)">
+<animateMotion dur="2.4s" begin="1.05s" repeatCount="indefinite" rotate="auto" path="M70,278 Q100,190 150,100"></animateMotion>
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.72;1" dur="2.4s" begin="1.05s" repeatCount="indefinite"></animate>
+</circle>
+<circle r="1.8" fill="#00A3FF" filter="url(#pullGlow)">
+<animateMotion dur="1.75s" begin="1.8s" repeatCount="indefinite" rotate="auto" path="M228,270 Q192,186 150,100"></animateMotion>
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.72;1" dur="1.75s" begin="1.8s" repeatCount="indefinite"></animate>
+</circle>
+<circle r="2" fill="#FDC180" filter="url(#pullGlow)">
+<animateMotion dur="1.95s" begin="0.5s" repeatCount="indefinite" rotate="auto" path="M40,210 Q90,168 150,96"></animateMotion>
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.72;1" dur="1.95s" begin="0.5s" repeatCount="indefinite"></animate>
+</circle>
+<circle r="1.6" fill="#00A3FF" filter="url(#pullGlow)">
+<animateMotion dur="2.15s" begin="1.35s" repeatCount="indefinite" rotate="auto" path="M262,206 Q210,166 150,96"></animateMotion>
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.72;1" dur="2.15s" begin="1.35s" repeatCount="indefinite"></animate>
+</circle>
+</svg>
 <div class="hero-model-wrap" id="heroModelWrap">
-<model-viewer id="heroModel" src="modelos/heroina.glb" alt="Herói do jogo" auto-rotate rotation-per-second="10deg" camera-controls disable-zoom shadow-intensity="0" exposure="1.1" power-preference="high-performance"></model-viewer>
-<div class="avatar-fallback" id="heroFallback"><div class="ring"></div><div class="initials">H</div><small>modelo 3D do herói pendente</small></div>
+<model-viewer id="heroModel" src="modelos/heroina.glb" alt="Clara, a heroína do jogo" auto-rotate rotation-per-second="10deg" camera-controls disable-zoom disable-pan min-camera-orbit="auto 89.9deg auto" max-camera-orbit="auto 90.1deg auto" shadow-intensity="0" exposure="1.1" power-preference="high-performance"></model-viewer>
+<div class="avatar-fallback" id="heroFallback"><div class="ring"></div><div class="initials">C</div><small>modelo 3D da Clara pendente</small></div>
 </div>
 </div>
 
@@ -341,6 +407,6 @@ Motion<em>Verse</em>
 <p>Projeto desenvolvido no Senac</p>
 </footer>
 
-<script src="script.js?v=3" defer></script>
+<script src="script.js?v=8" defer></script>
 </body>
-</html> 
+</html>

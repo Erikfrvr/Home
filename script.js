@@ -86,18 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   try {
-    const bgVideo = document.getElementById('bgVideo');
-    const heroVideo = document.getElementById('heroVideo');
-
-    if (heroVideo && bgVideo) {
-      heroVideo.addEventListener('error', () => bgVideo.classList.add('video-unavailable'), true);
-      setTimeout(() => {
-        if (heroVideo.readyState === 0) bgVideo.classList.add('video-unavailable');
-      }, 2500);
-    }
-  } catch (err) {}
-
-  try {
     const firefliesWrap = document.getElementById('fireflies');
     if (firefliesWrap && !prefersReducedMotion) {
       const COUNT = 20;
