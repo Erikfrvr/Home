@@ -148,22 +148,30 @@ function carregarRanking(){
 
 
         tr.appendChild(
-            criarCelula(jogadores[0])
+            criarCelula(
+                jogadores[0]?.nome
+            )
         );
-
-
+        
+        
         tr.appendChild(
-            criarCelula(jogadores[1])
+            criarCelula(
+                jogadores[1]?.nome
+            )
         );
-
-
+        
+        
         tr.appendChild(
-            criarCelula(jogadores[2])
+            criarCelula(
+                jogadores[2]?.nome
+            )
         );
-
-
+        
+        
         tr.appendChild(
-            criarCelula(jogadores[3])
+            criarCelula(
+                jogadores[3]?.nome
+            )
         );
 
 
