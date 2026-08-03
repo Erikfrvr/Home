@@ -264,8 +264,17 @@ function salvarEquipe(){
     // --------------------------
 
     document
-    .getElementById("formCadastro")
-    .reset();
+.getElementById("formCadastro")
+.reset();
+
+
+// IR PARA A PÁGINA DO RANKING
+
+setTimeout(function(){
+
+    window.location.href = "../ranking/ranking.html";
+
+}, 1500);
 
 
 
