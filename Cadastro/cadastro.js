@@ -556,6 +556,14 @@ document.addEventListener("keydown", function(event){
 
     }
 
+     // Modal de equipe já cadastrada
+    else if(modalEquipeExistente && modalEquipeExistente.style.display === "flex"){
+
+        event.preventDefault();
+        btnFecharEquipeExistente.click();
+
+    }
+
 });
 
 
