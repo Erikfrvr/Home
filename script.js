@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (focus) item.focus();
 
-        const { name, role, model, page, badge } = item.dataset;
+        const { name, role, model, page, badge, bg } = item.dataset;
         fighterName.textContent = name;
         fighterRole.textContent = role;
         fighterIndex.textContent = `Integrante ${String(index + 1).padStart(2, '0')}`;
@@ -190,6 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fighterEnter.setAttribute('href', page);
         fighterModel.setAttribute('src', model);
         fighterModelWrap.classList.remove('model-ready', 'model-error');
+        fighterModelWrap.style.backgroundImage = bg ? `url('${bg}')` : 'none';
 
         if (badge) {
           fighterBadge.textContent = badge;

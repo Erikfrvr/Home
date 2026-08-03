@@ -248,8 +248,6 @@ button:focus-visible {
   margin: 10px auto 0;
 }
 
-/* Computador: o monitor de verdade de onde a Clara foi sugada.
-   A personagem 3D fica em pé, saindo da tela. */
 .computer-frame {
   position: absolute;
   inset: 0;
@@ -462,6 +460,7 @@ button:focus-visible {
 .avatar-fallback {
   position: absolute;
   inset: 0;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -838,8 +837,12 @@ section {
 .fighter-model {
   position: relative;
   aspect-ratio: 1 / 1;
-  background: var(--panel-2);
+  background-color: var(--panel-2);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border: 3px solid var(--senac-blue-deep);
+  transition: background-image .3s;
 }
 
 .fighter-model model-viewer {
@@ -968,6 +971,7 @@ section {
   height: 100%;
   --poster-color: transparent;
   pointer-events: none;
+  content-visibility: auto;
 }
 
 .thumb-fallback {
