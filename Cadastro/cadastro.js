@@ -332,11 +332,11 @@ function salvarEquipe(){
 .reset();
 
 
-// IR PARA A PÁGINA DO RANKING
+// IR PARA A PÁGINA DO CAMERASELECTOR
 
 setTimeout(function(){
 
-    window.location.href = "../pages/cameraSelector.html";
+    window.location.href = "../cameraSelector/cameraSelector.html";
 
 }, 1500);
 
