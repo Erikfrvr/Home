@@ -8,11 +8,14 @@ let equipe = null;
 let cameras = [];
 
 
+
 // ==========================================
 // ELEMENTOS
 // ==========================================
 
+
 const nomeEquipe = document.getElementById("nomeEquipe");
+
 
 const jogadores = [
 
@@ -34,26 +37,43 @@ const selects = [
 ];
 
 
-const btnVoltar = document.getElementById("btnVoltar");
-const btnIniciar = document.getElementById("btnIniciar");
+const btnVoltar =
+    document.getElementById("btnVoltar");
 
 
-// Modal confirmação
-
-const modal = document.getElementById("modalConfirmacao");
-
-const btnCancelar = document.getElementById("btnCancelarModal");
-
-const btnConfirmar = document.getElementById("btnConfirmarModal");
+const btnIniciar =
+    document.getElementById("btnIniciar");
 
 
-// Modal erro
 
-const modalErro = document.getElementById("modalErro");
 
-const mensagemErro = document.getElementById("mensagemErro");
+// MODAIS (opcionais)
 
-const btnFecharErro = document.getElementById("btnFecharErro");
+const modal =
+    document.getElementById("modalConfirmacao");
+
+
+const btnCancelar =
+    document.getElementById("btnCancelarModal");
+
+
+const btnConfirmar =
+    document.getElementById("btnConfirmarModal");
+
+
+
+const modalErro =
+    document.getElementById("modalErro");
+
+
+const mensagemErro =
+    document.getElementById("mensagemErro");
+
+
+const btnFecharErro =
+    document.getElementById("btnFecharErro");
+
+
 
 
 
@@ -62,15 +82,19 @@ const btnFecharErro = document.getElementById("btnFecharErro");
 // ==========================================
 
 
-window.addEventListener("DOMContentLoaded", async () => {
+window.addEventListener(
+"DOMContentLoaded",
+async()=>{
 
 
-    equipe = JSON.parse(
-        localStorage.getItem("equipeAtual")
-    );
+    equipe =
+        JSON.parse(
+            localStorage.getItem("equipeAtual")
+        );
 
 
-    if (!equipe) {
+
+    if(!equipe){
 
 
         mostrarErro(
@@ -78,17 +102,22 @@ window.addEventListener("DOMContentLoaded", async () => {
         );
 
 
-        setTimeout(() => {
+        setTimeout(()=>{
+
 
             window.location.href =
-                "../cadastro/cadastro.html";
+            "../cadastro/cadastro.html";
+
 
         },2000);
 
 
         return;
 
+
     }
+
+
 
 
     carregarEquipe();
@@ -100,7 +129,10 @@ window.addEventListener("DOMContentLoaded", async () => {
     await carregarCameras();
 
 
+
 });
+
+
 
 
 
@@ -113,36 +145,51 @@ window.addEventListener("DOMContentLoaded", async () => {
 function carregarEquipe(){
 
 
-    nomeEquipe.textContent =
-        equipe.equipe ||
-        equipe.nomeEquipe;
+    if(nomeEquipe){
+
+
+        nomeEquipe.textContent =
+            equipe.equipe ||
+            equipe.nomeEquipe ||
+            "Equipe sem nome";
+
+
+    }
 
 
 
-    jogadores.forEach((elemento,index)=>{
+    jogadores.forEach(
+    (elemento,index)=>{
 
 
-        if(
-            equipe.jogadores[index]
-        ){
+        if(!elemento)
+            return;
 
 
-            if(
-                typeof equipe.jogadores[index] === "object"
-            ){
 
-                elemento.textContent =
-                    equipe.jogadores[index].nome;
-
-            }
-
-            else{
+        const jogador =
+            equipe.jogadores?.[index];
 
 
-                elemento.textContent =
-                    equipe.jogadores[index];
 
-            }
+        if(!jogador)
+            return;
+
+
+
+        if(typeof jogador === "object"){
+
+
+            elemento.textContent =
+                jogador.nome || "Jogador";
+
+
+        }
+        else{
+
+
+            elemento.textContent =
+                jogador;
 
 
         }
@@ -155,6 +202,10 @@ function carregarEquipe(){
 
 
 
+
+
+
+
 // ==========================================
 // FIRELIES
 // ==========================================
@@ -164,10 +215,12 @@ function criarFireflies(){
 
 
     const area =
-        document.getElementById("fireflies");
+        document.querySelector(".bg-fireflies");
 
 
-    if(!area) return;
+
+    if(!area)
+        return;
 
 
 
@@ -178,15 +231,18 @@ function criarFireflies(){
 
 
 
-    if(reduzir) return;
+    if(reduzir)
+        return;
 
 
 
     for(let i=0;i<20;i++){
 
 
+
         const f =
             document.createElement("span");
+
 
 
         f.className =
@@ -198,9 +254,9 @@ function criarFireflies(){
             Math.random()*100+"%";
 
 
+
         f.style.top =
-            (20+
-            Math.random()*70)+"%";
+            Math.random()*100+"%";
 
 
 
@@ -208,6 +264,7 @@ function criarFireflies(){
             "--dx",
             `${(Math.random()-0.5)*160}px`
         );
+
 
 
         f.style.setProperty(
@@ -223,7 +280,7 @@ function criarFireflies(){
 
 
         f.style.animationDelay =
-            `${Math.random()*8}s`;
+            `${Math.random()*5}s`;
 
 
 
@@ -234,6 +291,8 @@ function criarFireflies(){
 
 
 }
+
+
 
 
 
@@ -250,7 +309,8 @@ async function carregarCameras(){
 
 
         const stream =
-            await navigator.mediaDevices.getUserMedia({
+            await navigator.mediaDevices.getUserMedia(
+            {
 
                 video:true
 
@@ -264,24 +324,35 @@ async function carregarCameras(){
 
 
 
-        const devices =
+
+
+        const dispositivos =
             await navigator.mediaDevices.enumerateDevices();
 
 
 
-        cameras =
-            devices.filter(device=>
 
-                device.kind === "videoinput"
+
+        cameras =
+            dispositivos.filter(
+            dispositivo=>
+
+                dispositivo.kind === "videoinput"
 
             );
+
+
 
 
 
         selects.forEach(select=>{
 
 
-            preencherSelect(select);
+            if(select){
+
+                preencherSelect(select);
+
+            }
 
 
         });
@@ -297,8 +368,9 @@ async function carregarCameras(){
         console.error(error);
 
 
+
         mostrarErro(
-            "Não foi possível acessar as webcams."
+            "Permissão de câmera negada."
         );
 
 
@@ -309,8 +381,12 @@ async function carregarCameras(){
 
 
 
+
+
+
+
 // ==========================================
-// PREENCHE SELECT
+// PREENCHER SELECT
 // ==========================================
 
 
@@ -321,22 +397,27 @@ function preencherSelect(select){
 
 
 
-    const primeira =
+    const opcao =
         document.createElement("option");
 
 
-    primeira.value="";
 
-    primeira.textContent =
+    opcao.value="";
+
+
+    opcao.textContent =
         "Selecione uma câmera";
 
 
-    select.appendChild(primeira);
+
+    select.appendChild(opcao);
 
 
 
 
-    cameras.forEach((camera,index)=>{
+
+    cameras.forEach(
+    (camera,index)=>{
 
 
         const option =
@@ -358,10 +439,15 @@ function preencherSelect(select){
         select.appendChild(option);
 
 
+
     });
 
 
 }
+
+
+
+
 
 
 
@@ -374,16 +460,34 @@ function preencherSelect(select){
 function salvarConfiguracao(){
 
 
+
     const usados=[];
 
 
 
-    for(let i=0;i<selects.length;i++){
+
+    for(
+        let i=0;
+        i<selects.length;
+        i++
+    ){
+
+
+
+        const select =
+            selects[i];
+
+
+
+        if(!select)
+            continue;
+
 
 
 
         const idCamera =
-            selects[i].value;
+            select.value;
+
 
 
 
@@ -402,13 +506,15 @@ function salvarConfiguracao(){
 
 
 
+
+
         if(
             usados.includes(idCamera)
         ){
 
 
             mostrarErro(
-                "Cada jogador deve usar uma webcam diferente."
+                "Não use a mesma câmera em jogadores diferentes."
             );
 
 
@@ -419,16 +525,45 @@ function salvarConfiguracao(){
 
 
 
+
+
         usados.push(idCamera);
 
 
 
+
+
+        if(
+            typeof equipe.jogadores[i] === "string"
+        ){
+
+
+            equipe.jogadores[i] = {
+
+
+                nome:
+                equipe.jogadores[i]
+
+
+            };
+
+
+        }
+
+
+
+
+
+
         const camera =
-            cameras.find(c=>
+            cameras.find(
+            c=>
 
                 c.deviceId === idCamera
 
             );
+
+
 
 
 
@@ -439,7 +574,7 @@ function salvarConfiguracao(){
 
 
             nome:
-            camera.label ||
+            camera?.label ||
             `Webcam ${i+1}`
 
 
@@ -450,6 +585,9 @@ function salvarConfiguracao(){
 
 
 
+
+
+
     localStorage.setItem(
 
         "equipeAtual",
@@ -457,6 +595,8 @@ function salvarConfiguracao(){
         JSON.stringify(equipe)
 
     );
+
+
 
 
 
@@ -472,24 +612,33 @@ function salvarConfiguracao(){
 
 
 
+
+
+
+
 // ==========================================
-// ATUALIZAR RANKING
+// RANKING
 // ==========================================
 
 
 function atualizarRanking(){
 
 
+
     let ranking =
         JSON.parse(
             localStorage.getItem("ranking")
         )
-        || [];
+        ||
+        [];
 
 
 
-    const indice =
-        ranking.findIndex(item=>
+
+
+    const index =
+        ranking.findIndex(
+        item=>
 
             item.id === equipe.id
 
@@ -497,15 +646,15 @@ function atualizarRanking(){
 
 
 
-    if(indice !== -1){
 
 
-        ranking[indice]=equipe;
+    if(index>=0){
+
+
+        ranking[index]=equipe;
 
 
     }
-
-
     else{
 
 
@@ -513,6 +662,8 @@ function atualizarRanking(){
 
 
     }
+
+
 
 
 
@@ -530,6 +681,10 @@ function atualizarRanking(){
 
 
 
+
+
+
+
 // ==========================================
 // ERRO
 // ==========================================
@@ -538,12 +693,29 @@ function atualizarRanking(){
 function mostrarErro(msg){
 
 
-    mensagemErro.textContent =
-        msg;
+
+    if(
+        mensagemErro &&
+        modalErro
+    ){
 
 
-    modalErro.style.display =
-        "flex";
+        mensagemErro.textContent =
+            msg;
+
+
+        modalErro.style.display =
+            "flex";
+
+
+    }
+    else{
+
+
+        alert(msg);
+
+
+    }
 
 
 }
@@ -551,14 +723,26 @@ function mostrarErro(msg){
 
 
 
-btnFecharErro.onclick=()=>{
 
 
-    modalErro.style.display =
-        "none";
+
+if(btnFecharErro){
 
 
-};
+    btnFecharErro.onclick=()=>{
+
+
+        modalErro.style.display =
+            "none";
+
+
+    };
+
+
+}
+
+
+
 
 
 
@@ -568,35 +752,65 @@ btnFecharErro.onclick=()=>{
 // ==========================================
 
 
-btnVoltar.onclick=()=>{
+if(btnVoltar){
 
 
-    window.location.href =
+    btnVoltar.onclick=()=>{
+
+
+        window.location.href =
         "../cadastro/cadastro.html";
 
 
-};
+    };
+
+
+}
 
 
 
 
 
-btnIniciar.onclick=()=>{
+
+if(btnIniciar){
 
 
-    if(
-        salvarConfiguracao()
-    ){
+    btnIniciar.onclick=()=>{
 
 
-        modal.style.display =
-            "flex";
+        if(
+            salvarConfiguracao()
+        ){
 
 
-    }
+            if(modal){
 
 
-};
+                modal.style.display =
+                "flex";
+
+
+            }
+            else{
+
+
+                window.location.href =
+                "../game/game.html";
+
+
+            }
+
+
+        }
+
+
+    };
+
+
+}
+
+
+
 
 
 
@@ -606,37 +820,53 @@ btnIniciar.onclick=()=>{
 // ==========================================
 
 
-btnCancelar.onclick=()=>{
+if(btnCancelar){
 
 
-    modal.style.display =
+    btnCancelar.onclick=()=>{
+
+
+        modal.style.display =
         "none";
 
 
-};
+    };
+
+
+}
 
 
 
 
-btnConfirmar.onclick=()=>{
+
+if(btnConfirmar){
 
 
-    modal.style.display =
+    btnConfirmar.onclick=()=>{
+
+
+        modal.style.display =
         "none";
 
 
 
-    window.location.href =
+        window.location.href =
         "../game/game.html";
 
 
-};
+    };
+
+
+}
+
+
+
 
 
 
 
 // ==========================================
-// ENTER
+// TECLA ENTER
 // ==========================================
 
 
@@ -650,12 +880,15 @@ document.addEventListener(
 
 
 
+    // Modal confirmação aberto
     if(
-        modal.style.display==="flex"
+        modal &&
+        modal.style.display === "flex"
     ){
 
 
-        btnConfirmar.click();
+        btnConfirmar?.click();
+
 
         return;
 
@@ -664,12 +897,15 @@ document.addEventListener(
 
 
 
+    // Modal de erro aberto
     if(
-        modalErro.style.display==="flex"
+        modalErro &&
+        modalErro.style.display === "flex"
     ){
 
 
-        btnFecharErro.click();
+        btnFecharErro?.click();
+
 
         return;
 
@@ -678,7 +914,10 @@ document.addEventListener(
 
 
 
-    btnIniciar.click();
+    // Enter funciona como botão iniciar
+
+    btnIniciar?.click();
+
 
 
 });
@@ -686,8 +925,9 @@ document.addEventListener(
 
 
 
+
 // ==========================================
-// FECHAR MODAIS
+// FECHAR CLICANDO FORA
 // ==========================================
 
 
@@ -700,7 +940,7 @@ window.onclick=(e)=>{
 
 
         modal.style.display =
-            "none";
+        "none";
 
 
     }
@@ -713,7 +953,7 @@ window.onclick=(e)=>{
 
 
         modalErro.style.display =
-            "none";
+        "none";
 
 
     }
