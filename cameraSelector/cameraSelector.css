@@ -1,0 +1,62 @@
+.cardJogador{
+
+    display:flex;
+    flex-direction:column;
+
+    margin-bottom:20px;
+
+    background:var(--panel);
+
+    border:3px solid var(--senac-orange);
+
+    box-shadow:
+        5px 5px 0 var(--pixel-shadow),
+        inset 0 0 0 3px var(--senac-blue-deep);
+
+    padding:24px;
+
+}
+
+.cardJogador h3{
+
+    font-family:var(--font-pixel);
+
+    font-size:.60rem;
+
+    margin-bottom:12px;
+
+}
+
+.cardJogador p{
+
+    color:var(--text-dim);
+
+    margin-bottom:12px;
+
+}
+
+.cardJogador select{
+
+    width:100%;
+
+    background:var(--panel-solid);
+
+    color:var(--text);
+
+    border:3px solid var(--senac-blue);
+
+    padding:12px;
+
+    outline:none;
+
+    transition:.15s;
+
+}
+
+.cardJogador select:focus{
+
+    border-color:var(--senac-orange);
+
+    box-shadow:4px 4px 0 var(--pixel-shadow);
+
+}
