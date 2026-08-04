@@ -43,7 +43,10 @@ button:focus-visible {
   inset: 0;
   z-index: -2;
   overflow: hidden;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(0,74,141,.5), transparent 55%),
+    radial-gradient(circle at 80% 70%, rgba(247,148,29,.18), transparent 50%),
+    var(--bg);
 }
 
 .personagem-mecanica {
@@ -65,23 +68,6 @@ button:focus-visible {
   .personagem-mecanica {
     animation: none;
   }
-}
-.bg-video video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.5;
-}
-
-.bg-video.video-unavailable video { display: none; }
-
-.bg-video.video-unavailable {
-  background:
-    radial-gradient(circle at 30% 20%, rgba(0,74,141,.5), transparent 55%),
-    radial-gradient(circle at 80% 70%, rgba(247,148,29,.18), transparent 50%),
-    var(--bg);
 }
 
 .bg-overlay {
@@ -262,32 +248,207 @@ button:focus-visible {
   margin: 10px auto 0;
 }
 
-.rune-circle {
+.computer-frame {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: rune-spin 30s linear infinite steps(60);
+  z-index: 1;
 }
 
-.rune-circle svg { width: 100%; height: 100%; }
-.rune-ring { fill: none; stroke: var(--senac-blue); stroke-width: 3; opacity: .55; }
-.rune-ring-2 { fill: none; stroke: var(--senac-orange); stroke-width: 3; opacity: .6; stroke-dasharray: 6 10; }
-.rune-tick { fill: var(--senac-orange-light); opacity: .8; }
+.monitor-body {
+  position: absolute;
+  left: 50%;
+  top: 4%;
+  transform: translateX(-50%);
+  width: 88%;
+  aspect-ratio: 16 / 11;
+  background: linear-gradient(155deg, #1c1f24, #101216 60%, #06070a);
+  border: 3px solid var(--pixel-shadow);
+  border-radius: 6px;
+  padding: 5.5%;
+  box-shadow:
+    0 0 0 2px rgba(0,74,141,.35),
+    5px 5px 0 var(--pixel-shadow),
+    0 22px 40px rgba(0,0,0,.55);
+}
 
-@keyframes rune-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.monitor-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #010204;
+  border: 2px solid #000;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: inset 0 0 24px rgba(0,0,0,.9);
+}
+
+.screen-vortex {
+  position: absolute;
+  inset: -30%;
+  overflow: hidden;
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+  animation: vortex-surge 6s ease-in-out infinite;
+}
+
+.screen-vortex::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(
+    from 0deg,
+    var(--senac-blue) 0deg,
+    var(--senac-blue-deep) 60deg,
+    #010204 120deg,
+    var(--senac-orange) 190deg,
+    var(--senac-blue-deep) 260deg,
+    var(--senac-blue) 360deg
+  );
+  filter: blur(6px);
+  opacity: .85;
+  animation: vortex-spin 9s linear infinite;
+}
+
+@keyframes vortex-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes vortex-surge {
+  0%, 76% { transform: scale(1); filter: brightness(1); }
+  85% { transform: scale(1.22); filter: brightness(1.6); }
+  92% { transform: scale(1.04); filter: brightness(1.15); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+
+.screen-pulse-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22%;
+  height: 22%;
+  border-radius: 50%;
+  border: 3px solid var(--senac-orange-light);
+  box-shadow: 0 0 14px 4px rgba(253,193,128,.6);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  z-index: 2;
+  animation: pulse-ring 6s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%, 78% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  84% { opacity: .95; }
+  93% { transform: translate(-50%, -50%) scale(3.4); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(3.4); opacity: 0; }
+}
+
+.monitor-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 52%, transparent 0%, transparent 18%, rgba(1,2,4,.55) 46%, #010204 78%);
+  z-index: 1;
+}
+
+.screen-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(238,243,248,.08) 0px,
+    rgba(238,243,248,.08) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.screen-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(115deg, rgba(255,255,255,.10) 0%, transparent 30%, transparent 70%, rgba(255,255,255,.04) 100%);
+  pointer-events: none;
+}
+
+.monitor-led {
+  position: absolute;
+  right: 6%;
+  bottom: 1.6%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--senac-orange);
+  box-shadow: 0 0 6px 2px rgba(247,148,29,.9);
+  animation: blink 2.2s steps(2) infinite;
+}
+
+.monitor-stand-neck {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translateX(-50%);
+  width: 6%;
+  height: 14%;
+  background: linear-gradient(to right, #0d0f12, #1c1f24 50%, #0d0f12);
+  border: 2px solid var(--pixel-shadow);
+}
+
+.monitor-stand-base {
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
+  width: 34%;
+  height: 8px;
+  background: linear-gradient(to right, #0d0f12, #1c1f24 50%, #0d0f12);
+  border: 2px solid var(--pixel-shadow);
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.5);
+}
+
+.pull-fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
 
 .hero-model-wrap {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  animation: hero-float 2.2s steps(6) infinite;
+  z-index: 3;
+  animation:
+    hero-float 2.2s steps(6) infinite,
+    hero-pulled 6s ease-in-out infinite,
+    hero-flicker 6s ease-in-out infinite;
 }
 
 @keyframes hero-float {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-10px); }
+}
+
+@keyframes hero-pulled {
+  0%, 76% { transform: translateY(0) scale(1) rotate(0deg); filter: drop-shadow(0 0 0 rgba(0,163,255,0)); }
+  82% { transform: translateY(-2%) scale(.99) rotate(-1deg); }
+  85% { transform: translateY(-7%) scale(.965) rotate(1.4deg); filter: drop-shadow(0 0 20px rgba(0,163,255,.6)); }
+  88% { transform: translateY(-4%) scale(.98) rotate(-0.8deg); }
+  93% { transform: translateY(1%) scale(1.015) rotate(0deg); filter: drop-shadow(0 0 0 rgba(0,163,255,0)); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+@keyframes hero-flicker {
+  0%, 80%, 100% { opacity: 1; }
+  83% { opacity: .5; }
+  85% { opacity: .92; }
+  87% { opacity: .55; }
+  89% { opacity: 1; }
 }
 
 .hero-model-wrap model-viewer {
@@ -299,6 +460,7 @@ button:focus-visible {
 .avatar-fallback {
   position: absolute;
   inset: 0;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -421,12 +583,58 @@ button:focus-visible {
   gap: 10px;
 }
 
+/* Linha */
 .scroll-cue::after {
-  content: '';
+  content: "";
   width: 4px;
-  height: 30px;
+  height: 200px;
   background: var(--senac-orange);
-  animation: scrollcue 1.4s steps(4) infinite;
+
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+
+/* Seta */
+.scroll-cue::before {
+  content: "▼";
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+
+  font-size: 38px;
+  color: var(--senac-orange);
+
+  transform: translateX(-50%);
+
+  animation: arrowPulse 2s ease-in-out infinite;
+}
+
+
+/* Animação da linha */
+@keyframes scrollPulse {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translateY(12px);
+    opacity: 1;
+  }
+}
+
+
+/* Animação da seta */
+@keyframes arrowPulse {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(12px);
+    opacity: 1;
+  }
 }
 
 @keyframes scrollcue {
@@ -658,7 +866,11 @@ section {
   justify-content: center;
 }
 
-.select-wrap { max-width: min(1300px, 92%); }
+.select-wrap {
+  max-width: min(1300px, 92%);
+  width: 100%;
+  margin: 0 auto;
+}
 
 .fighter-stage {
   padding: 40px;
@@ -671,8 +883,12 @@ section {
 .fighter-model {
   position: relative;
   aspect-ratio: 1 / 1;
-  background: var(--panel-2);
+  background-color: var(--panel-2);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border: 3px solid var(--senac-blue-deep);
+  transition: background-image .3s;
 }
 
 .fighter-model model-viewer {
@@ -801,6 +1017,7 @@ section {
   height: 100%;
   --poster-color: transparent;
   pointer-events: none;
+  content-visibility: auto;
 }
 
 .thumb-fallback {

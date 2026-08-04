@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
               'active',
               a.getAttribute('href') === `#${entry.target.id}`
             ));
+            history.replaceState(null, "", `#${entry.target.id}`);
           }
         });
       }, { threshold: 0.5 });
@@ -83,18 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch (err) {}
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  try {
-    const bgVideo = document.getElementById('bgVideo');
-    const heroVideo = document.getElementById('heroVideo');
-
-    if (heroVideo && bgVideo) {
-      heroVideo.addEventListener('error', () => bgVideo.classList.add('video-unavailable'), true);
-      setTimeout(() => {
-        if (heroVideo.readyState === 0) bgVideo.classList.add('video-unavailable');
-      }, 2500);
-    }
-  } catch (err) {}
 
   try {
     const firefliesWrap = document.getElementById('fireflies');
@@ -193,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (focus) item.focus();
 
-        const { name, role, model, page, badge } = item.dataset;
+        const { name, role, model, page, badge, bg } = item.dataset;
         fighterName.textContent = name;
         fighterRole.textContent = role;
         fighterIndex.textContent = `Integrante ${String(index + 1).padStart(2, '0')}`;
@@ -201,6 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fighterEnter.setAttribute('href', page);
         fighterModel.setAttribute('src', model);
         fighterModelWrap.classList.remove('model-ready', 'model-error');
+        fighterModelWrap.style.backgroundImage = bg ? `url('${bg}')` : 'none';
 
         if (badge) {
           fighterBadge.textContent = badge;
