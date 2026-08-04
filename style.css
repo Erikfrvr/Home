@@ -207,6 +207,47 @@ button:focus-visible {
   border-color: var(--senac-orange);
 }
 
+.access-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 2px solid var(--text-dim);
+  color: var(--text-dim);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background-color .2s;
+}
+
+.access-btn:hover,
+.access-btn:focus-visible {
+  border-color: var(--senac-orange-light);
+  color: var(--text);
+}
+
+.access-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.access-btn.is-active {
+  border-color: var(--senac-orange);
+  color: var(--senac-orange-light);
+  background: rgba(247,148,29,.1);
+}
+
+.access-btn.is-active .access-icon {
+  animation: blink 1.4s steps(2) infinite;
+}
+
+@media (max-width: 1050px) {
+  .access-label { display: none; }
+  .access-btn { padding: 9px; }
+}
+
 .nav-toggle {
   display: none;
   width: 42px;
@@ -583,54 +624,41 @@ button:focus-visible {
   gap: 10px;
 }
 
-/* Linha */
 .scroll-cue::after {
   content: "";
   width: 4px;
   height: 200px;
   background: var(--senac-orange);
-
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
-
-/* Seta */
 .scroll-cue::before {
   content: "▼";
   position: absolute;
   bottom: -35px;
   left: 50%;
-
   font-size: 38px;
   color: var(--senac-orange);
-
   transform: translateX(-50%);
-
   animation: arrowPulse 2s ease-in-out infinite;
 }
 
-
-/* Animação da linha */
 @keyframes scrollPulse {
   0%, 100% {
     transform: translateY(0);
     opacity: 0.35;
   }
-
   50% {
     transform: translateY(12px);
     opacity: 1;
   }
 }
 
-
-/* Animação da seta */
 @keyframes arrowPulse {
   0%, 100% {
     transform: translateX(-50%) translateY(0);
     opacity: 0.35;
   }
-
   50% {
     transform: translateX(-50%) translateY(12px);
     opacity: 1;
@@ -1099,7 +1127,6 @@ footer .foot-accent { color: var(--senac-orange); }
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-
 }
 .sprite-hand {
   width: 64px;

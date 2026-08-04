@@ -201,6 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       roster.forEach((item, i) => {
+        item.classList.add('tts-trigger');
+        item.setAttribute('data-tts', `${item.dataset.name}. ${item.dataset.role}${item.dataset.badge ? '. ' + item.dataset.badge : ''}.`);
         item.addEventListener('click', () => selectFighter(i));
 
         const thumbViewer = item.querySelector('model-viewer');
@@ -235,6 +237,85 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       selectFighter(0, { scroll: false });
+    }
+  } catch (err) {}
+
+  try {
+    let vozAtivada = false;
+    const sintetizador = window.speechSynthesis;
+    let vozPortugues = null;
+
+    function carregarVozes() {
+      const vozes = sintetizador.getVoices();
+      vozPortugues =
+        vozes.find(v => v.lang === 'pt-BR') ||
+        vozes.find(v => v.lang.startsWith('pt')) ||
+        null;
+    }
+    carregarVozes();
+    if (sintetizador.onvoiceschanged !== undefined) {
+      sintetizador.onvoiceschanged = carregarVozes;
+    }
+
+    function falar(texto) {
+      if (!vozAtivada || !texto) return;
+      sintetizador.cancel();
+      const fala = new SpeechSynthesisUtterance(texto);
+      fala.lang = 'pt-BR';
+      if (vozPortugues) fala.voice = vozPortugues;
+      fala.rate = 1;
+      fala.pitch = 1;
+      fala.volume = 1;
+      sintetizador.speak(fala);
+    }
+
+    const btnAcessibilidade = document.getElementById('btn-acessibilidade');
+
+    if (btnAcessibilidade) {
+      function alternarVoz() {
+        vozAtivada = !vozAtivada;
+
+        btnAcessibilidade.classList.toggle('is-active', vozAtivada);
+        btnAcessibilidade.setAttribute('aria-pressed', String(vozAtivada));
+
+        if (vozAtivada) {
+          falar('Acessibilidade ativada. Passe o mouse pelos elementos para ouvir a descrição.');
+        } else {
+          sintetizador.cancel();
+        }
+      }
+
+      btnAcessibilidade.addEventListener('click', alternarVoz);
+
+      document.addEventListener('keydown', (e) => {
+        if (document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+        if (e.key.toLowerCase() === 'v') alternarVoz();
+      });
+
+      document.addEventListener('mouseover', (event) => {
+        const elemento = event.target.closest('.tts-trigger');
+        if (!elemento) return;
+        if (elemento._ttsHover) return;
+        elemento._ttsHover = true;
+        falar(elemento.getAttribute('data-tts'));
+      });
+
+      document.addEventListener('mouseout', (event) => {
+        const elemento = event.target.closest('.tts-trigger');
+        if (!elemento) return;
+        if (elemento.contains(event.relatedTarget)) return;
+        elemento._ttsHover = false;
+      });
+
+      document.addEventListener('focusin', (event) => {
+        const elemento = event.target.closest('.tts-trigger');
+        if (elemento) falar(elemento.getAttribute('data-tts'));
+      });
+
+      document.addEventListener('click', (event) => {
+        const elemento = event.target.closest('.tts-trigger');
+        if (elemento && elemento !== btnAcessibilidade) falar(elemento.getAttribute('data-tts'));
+      });
     }
   } catch (err) {}
 
