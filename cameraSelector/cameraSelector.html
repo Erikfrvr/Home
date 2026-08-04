@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+
 <head>
 
     <meta charset="UTF-8">
@@ -8,196 +9,126 @@
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0">
-
-    <title>Motion Verse | Selecionar Webcams</title>
-
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../cadastro/cadastro.css">
     <link rel="stylesheet" href="cameraSelector.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Selecionar Câmeras</title>
+
+    
+
 
 </head>
 
 <body>
 
-    <div class="bg-video" id="bgVideo">
+    <div class="bg-video">
 
-        <video
-            id="heroVideo"
-            autoplay
-            muted
-            loop
-            playsinline
-            poster="../assets/video/floresta-poster.jpg">
-
-            <source src="../assets/video/floresta-loop.mp4" type="video/mp4">
-
+        <video autoplay muted loop playsinline>
+            <source
+                src="assets/video/floresta-loop.mp4"
+                type="video/mp4">
         </video>
 
-        <div
-            class="bg-fireflies"
-            id="fireflies"
-            aria-hidden="true">
-
-        </div>
+        <div class="bg-fireflies"></div>
 
         <div class="bg-overlay"></div>
 
     </div>
 
-    <!-- Conteúdo -->
 
     <main class="container">
 
-        <div class="card">
+        <h1>Selecionar Webcams</h1>
 
-            <header>
+        <h2 id="nomeEquipe"></h2>
 
-                <h1>Motion Verse</h1>
 
-                <p>Selecionar Webcams</p>
 
-                <h2 id="nomeEquipe"></h2>
+        <div class="cardJogador">
 
-            </header>
+            <h3>Jogador 1 - Frente</h3>
 
-            <!-- Jogador 1 -->
+            <p id="nomeJogador1"></p>
 
-            <div class="cardJogador">
+            <select id="camera1"></select>
 
-                <h3>Jogador 1 - Frente</h3>
+        </div>
 
-                <p id="nomeJogador1"></p>
 
-                <select id="camera1"></select>
 
-            </div>
 
-            <!-- Jogador 2 -->
+        <div class="cardJogador">
 
-            <div class="cardJogador">
+            <h3>Jogador 2 - Trás</h3>
 
-                <h3>Jogador 2 - Trás</h3>
+            <p id="nomeJogador2"></p>
 
-                <p id="nomeJogador2"></p>
+            <select id="camera2"></select>
 
-                <select id="camera2"></select>
+        </div>
 
-            </div>
 
-            <!-- Jogador 3 -->
 
-            <div class="cardJogador">
 
-                <h3>Jogador 3 - Baixo</h3>
+        <div class="cardJogador">
 
-                <p id="nomeJogador3"></p>
+            <h3>Jogador 3 - Baixo</h3>
 
-                <select id="camera3"></select>
+            <p id="nomeJogador3"></p>
 
-            </div>
+            <select id="camera3"></select>
 
-            <!-- Jogador 4 -->
+        </div>
 
-            <div class="cardJogador">
 
-                <h3>Jogador 4 - Cima</h3>
 
-                <p id="nomeJogador4"></p>
 
-                <select id="camera4"></select>
+        <div class="cardJogador">
 
-            </div>
+            <h3>Jogador 4 - Cima</h3>
 
-            <!-- Botões -->
+            <p id="nomeJogador4"></p>
 
-            <div class="botoes">
+            <select id="camera4"></select>
 
-                <button
-                    id="btnVoltar"
-                    class="pixel-btn pixel-btn-blue">
+        </div>
 
-                    Voltar
 
-                </button>
 
-                <button
-                    id="btnIniciar"
-                    class="pixel-btn pixel-btn-orange">
 
-                    Iniciar Jogo
+        <div class="botoes">
 
-                </button>
+            <button
+                id="btnVoltar"
+                type="button">
 
-            </div>
+                Voltar
+
+            </button>
+
+
+            <button
+                id="btnIniciar"
+                type="button">
+
+                Iniciar Jogo
+
+            </button>
 
         </div>
 
     </main>
 
-    <!-- Modal Confirmar -->
 
-<div id="modalConfirmacao" class="modal">
-
-    <div class="modal-conteudo">
-
-        <h2>Confirmar</h2>
+    <footer>
 
         <p>
-
-            Deseja iniciar o jogo com essas webcams?
-
+            © 2026 Motion<span class="foot-accent">Verse</span>
         </p>
 
-        <div class="modal-botoes">
-
-            <button
-                id="btnCancelarModal"
-                class="pixel-btn pixel-btn-blue">
-
-                Cancelar
-
-            </button>
-
-            <button
-                id="btnConfirmarModal"
-                class="pixel-btn pixel-btn-orange">
-
-                Iniciar
-
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- Modal Erro -->
-
-<div id="modalErro" class="modal">
-
-    <div class="modal-conteudo">
-
-        <h2>Atenção</h2>
-
-        <p id="mensagemErro"></p>
-
-        <div class="modal-botoes">
-
-            <button
-                id="btnFecharErro"
-                class="pixel-btn pixel-btn-orange">
-
-                OK
-
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
+        <p>
+            Projeto desenvolvido no Senac
+        </p>
 
     <script type="module" src="../handController/cameraManager.js"></script>
     <script type="module" src="../handController/cameraSelector.js"></script>
@@ -207,5 +138,4 @@
     <script type="module" src="../handController/handTracker.js"></script>
 
 </body>
-
 </html>
