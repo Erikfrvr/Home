@@ -23,24 +23,27 @@
 </div>
 
 <nav class="navbar">
-<a href="#home" class="logo">
+<a href="#home" class="logo tts-trigger" data-tts="Motion Verse. Ir para o início.">
 <span class="logo-mark" aria-hidden="true"></span>
 Motion<em>Verse</em>
 </a>
 
 <ul class="nav-links" id="navLinks">
-<li><a href="#home">Início</a></li>
-<li><a href="#mecanica">Como  Jogar</a></li>
-<li><a href="#demo">Demonstração</a></li>
-<li><a href="#equipe">Equipe</a></li>
+<li><a href="#home" class="tts-trigger" data-tts="Início.">Início</a></li>
+<li><a href="#mecanica" class="tts-trigger" data-tts="Como Jogar.">Como  Jogar</a></li>
+<li><a href="#demo" class="tts-trigger" data-tts="Demonstração.">Demonstração</a></li>
+<li><a href="#equipe" class="tts-trigger" data-tts="Equipe.">Equipe</a></li>
 </ul>
 
 <div class="nav-actions" id="navActions">
-<a href="Ranking\ranking.html" class="pixel-btn pixel-btn-blue">🏆 Ranking</a>
-<a href="Cadastro\cadastro.html" class="pixel-btn pixel-btn-orange">Cadastro</a>
+<button id="btn-acessibilidade" class="access-btn tts-trigger" type="button" aria-pressed="false" aria-label="Ativar leitura por voz" data-tts="Acessibilidade ativada. Passe o mouse pelos elementos para ouvir a descrição.">
+<span class="access-icon" aria-hidden="true">♿</span><span class="access-label">Acessibilidade</span>
+</button>
+<a href="Ranking\ranking.html" class="pixel-btn pixel-btn-blue tts-trigger" data-tts="Ranking.">🏆 Ranking</a>
+<a href="Cadastro\cadastro.html" class="pixel-btn pixel-btn-orange tts-trigger" data-tts="Cadastro.">Cadastro</a>
 </div>
 
-<button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+<button class="nav-toggle tts-trigger" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks" data-tts="Menu.">
 <span></span>
 </button>
 </nav>
@@ -125,13 +128,13 @@ Motion<em>Verse</em>
 </div>
 </div>
 
-<div class="hero-content reveal-zoom">
+<div class="hero-content reveal-zoom tts-trigger" data-tts="Motion Verse. Puxada para dentro do computador, Clara ficou presa em um mundo 2D. Agora, ela precisa desvendar seus mistérios para voltar ao mundo dela.">
 <span class="hero-tag"><span class="dot" aria-hidden="true"></span> A lenda desperta</span>
 <h1>Motion<span class="accent">Verse</span></h1>
 <p>Puxada para dentro do computador, Clara ficou presa em um mundo 2D. Agora, ela precisa desvendar seus mistérios para voltar ao mundo dela.</p>
 <div class="hero-actions">
-<a href="#demo" class="pixel-btn pixel-btn-orange">Ver Demonstração</a>
-<a href="#equipe" class="pixel-btn pixel-btn-ghost">Conhecer a Equipe</a>
+<a href="#demo" class="pixel-btn pixel-btn-orange tts-trigger" data-tts="Ver Demonstração.">Ver Demonstração</a>
+<a href="#equipe" class="pixel-btn pixel-btn-ghost tts-trigger" data-tts="Conhecer a Equipe.">Conhecer a Equipe</a>
 </div>
 </div>
 
@@ -139,7 +142,7 @@ Motion<em>Verse</em>
 </header>
 
 <section id="mecanica">
-<div class="center reveal">
+<div class="center reveal tts-trigger" data-tts="Como Jogar. Quatro gestos simples controlam a aventura.">
 <span class="section-label">A Magia por Trás</span>
 <h2 class="section-title">Como Jogar</h2>
 <p class="section-desc">Quatro gestos simples controlam a aventura.</p>
@@ -147,7 +150,7 @@ Motion<em>Verse</em>
 </div>
 
 <div class="mechanics-grid">
-<div class="mechanic-card pixel-panel reveal-zoom">
+<div class="mechanic-card pixel-panel reveal-zoom tts-trigger" data-tts="Gesto 1: Mão Aberta. Move para cima.">
 <span class="mechanic-step">Gesto 01</span>
 <div class="mechanic-media">
   <div class="sprite-hand sprite-static" role="img" aria-label="Mão Aberta"></div>
@@ -155,7 +158,7 @@ Motion<em>Verse</em>
 <h3>Mão Aberta</h3>
 <p>Move para cima.</p>
 </div>
-<div class="mechanic-card pixel-panel reveal-zoom">
+<div class="mechanic-card pixel-panel reveal-zoom tts-trigger" data-tts="Gesto 2: Fechar Mão. Move para baixo.">
 <span class="mechanic-step">Gesto 02</span>
 <div class="mechanic-media">
   <div class="sprite-hand sprite-anim" role="img" aria-label="Fechar Mão"></div>
@@ -163,7 +166,7 @@ Motion<em>Verse</em>
 <h3>Fechar Mão</h3>
 <p>Move para baixo.</p>
 </div>
-<div class="mechanic-card pixel-panel reveal-zoom">
+<div class="mechanic-card pixel-panel reveal-zoom tts-trigger" data-tts="Gesto 3: Mão para a Direita. Move para a direita.">
 <span class="mechanic-step">Gesto 03</span>
 <div class="mechanic-media">
 <img src="assets\mao-direita.png" alt="Mão para a Direita" class="mechanic-img" loading="lazy" decoding="async">
@@ -171,7 +174,7 @@ Motion<em>Verse</em>
 <h3>Mão para a Direita</h3>
 <p>Move para a Direita.</p>
 </div>
-<div class="mechanic-card pixel-panel reveal-zoom">
+<div class="mechanic-card pixel-panel reveal-zoom tts-trigger" data-tts="Gesto 4: Mão para a Esquerda. Move para a esquerda.">
 <span class="mechanic-step">Gesto 04</span>
 <div class="mechanic-media">
 <img src="assets\mao-esquerda.png" alt="Mão para a Esquerda" class="mechanic-img" loading="lazy" decoding="async">
@@ -183,13 +186,13 @@ Motion<em>Verse</em>
 </section>
 
 <section id="demo">
-<div class="center reveal">
+<div class="center reveal tts-trigger" data-tts="Gameplay. Ação em Tempo Real. Assista ao vídeo tutorial para entender como a aventura de Clara funcionará.">
 <span class="section-label">Gameplay</span>
 <h2 class="section-title">Ação em Tempo Real</h2>
 <p class="section-desc">Assista ao video tutorial para entender como a aventura de Clara funcionará.</p>
 </div>
 
-<div class="trailer-frame pixel-panel reveal-zoom" id="trailerFrame" role="button" tabindex="0" aria-label="Assistir demonstração">
+<div class="trailer-frame pixel-panel reveal-zoom tts-trigger" id="trailerFrame" role="button" tabindex="0" aria-label="Assistir demonstração" data-tts="Vídeo demonstrativo de como jogar MotionVerse.">
 <span class="trailer-tag"><span class="rec-dot" aria-hidden="true"></span>Preview</span>
 <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80" alt="Cena de gameplay do MotionVerse" loading="lazy" decoding="async">
 <span class="play-btn" aria-hidden="true">▶</span>
@@ -198,13 +201,13 @@ Motion<em>Verse</em>
 
 <div class="modal-overlay" id="trailerModal">
 <div class="modal-box">
-<button class="modal-close" id="modalClose" aria-label="Fechar vídeo">✕</button>
+<button class="modal-close tts-trigger" id="modalClose" aria-label="Fechar vídeo" data-tts="Fechar vídeo.">✕</button>
 <p>Vídeo de demonstração ainda não foi adicionado. Troque este bloco por um vídeo ou iframe real em script.js.</p>
 </div>
 </div>
 
 <section id="equipe">
-    <div class="center reveal">
+    <div class="center reveal tts-trigger" data-tts="Sobre Nós. O professor e treze alunos deram vida a este mundo.">
     <span class="section-label">A Companhia</span>
     <h2 class="section-title">Sobre Nos</h2>
     <p class="section-desc">O professor e treze alunos deram vida a este mundo.</p>
