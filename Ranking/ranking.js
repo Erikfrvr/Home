@@ -67,7 +67,7 @@ function salvarRanking(ranking){
 // ======================================================
 
 
-function criarCelula(texto){
+function criarCelula(texto, rotulo){
 
     const td =
     document.createElement("td");
@@ -75,6 +75,18 @@ function criarCelula(texto){
 
     td.textContent =
     texto || "-";
+
+
+    if(rotulo){
+
+        td.classList.add("tts-trigger");
+
+        td.setAttribute(
+            "data-tts",
+            `${rotulo}: ${texto || "não informado"}.`
+        );
+
+    }
 
 
     return td;
@@ -109,10 +121,15 @@ function carregarRanking(){
 
         td.colSpan = 9;
 
-        td.className="vazio";
+        td.className="vazio tts-trigger";
 
         td.textContent =
         "Nenhuma equipe cadastrada.";
+
+        td.setAttribute(
+            "data-tts",
+            "Nenhuma equipe cadastrada."
+        );
 
 
         tr.appendChild(td);
@@ -143,45 +160,49 @@ function carregarRanking(){
 
 
         tr.appendChild(
-            criarCelula(equipe.equipe)
+            criarCelula(equipe.equipe, "Equipe")
         );
 
 
         tr.appendChild(
             criarCelula(
-                jogadores[0]?.nome
+                jogadores[0]?.nome,
+                "Jogador 1"
             )
         );
         
         
         tr.appendChild(
             criarCelula(
-                jogadores[1]?.nome
+                jogadores[1]?.nome,
+                "Jogador 2"
             )
         );
         
         
         tr.appendChild(
             criarCelula(
-                jogadores[2]?.nome
+                jogadores[2]?.nome,
+                "Jogador 3"
             )
         );
         
         
         tr.appendChild(
             criarCelula(
-                jogadores[3]?.nome
+                jogadores[3]?.nome,
+                "Jogador 4"
             )
         );
 
 
         tr.appendChild(
-            criarCelula(equipe.pontuacao || 0)
+            criarCelula(equipe.pontuacao || 0, "Pontos")
         );
 
 
         tr.appendChild(
-            criarCelula(equipe.tempo || "00:00")
+            criarCelula(equipe.tempo || "00:00", "Tempo")
         );
 
 
@@ -195,9 +216,14 @@ function carregarRanking(){
         document.createElement("button");
 
 
-        btn.className="btn-excluir";
+        btn.className="btn-excluir tts-trigger";
 
         btn.textContent="Excluir";
+
+        btn.setAttribute(
+            "data-tts",
+            `Excluir equipe ${equipe.equipe || indice + 1}.`
+        );
 
 
 
@@ -487,15 +513,28 @@ function abrirConfirmacao(texto, funcao){
     acaoConfirmacao = funcao;
 
 
-    document
-    .getElementById("mensagemConfirmacao")
-    .textContent = texto;
+    const mensagemConfirmacao =
+    document.getElementById("mensagemConfirmacao");
+
+
+    mensagemConfirmacao.textContent = texto;
+
+
+    mensagemConfirmacao.classList.add("tts-trigger");
+
+    mensagemConfirmacao.setAttribute(
+        "data-tts",
+        texto
+    );
 
 
 
     document
     .getElementById("modalConfirmar")
     .style.display="flex";
+
+
+    falarTexto(texto);
 
 
 }
@@ -560,15 +599,28 @@ function fecharConfirmacao(){
 function abrirMensagem(texto){
 
 
-    document
-    .getElementById("textoMensagem")
-    .textContent = texto;
+    const textoMensagem =
+    document.getElementById("textoMensagem");
+
+
+    textoMensagem.textContent = texto;
+
+
+    textoMensagem.classList.add("tts-trigger");
+
+    textoMensagem.setAttribute(
+        "data-tts",
+        texto
+    );
 
 
 
     document
     .getElementById("modalMensagem")
     .style.display="flex";
+
+
+    falarTexto(texto);
 
 
 }
@@ -747,6 +799,206 @@ try{
 
 
             firefliesWrap.appendChild(f);
+
+
+        }
+
+
+    }
+
+
+}catch(err){
+
+    console.error(err);
+
+}
+
+
+
+
+
+// ======================================================
+// ACESSIBILIDADE (LEITURA POR VOZ)
+// ======================================================
+
+
+let vozAtivada = false;
+let sintetizador = null;
+let vozPortugues = null;
+
+
+function falarTexto(texto){
+
+    if(!vozAtivada || !texto || !sintetizador) return;
+
+    sintetizador.cancel();
+
+    const fala =
+    new SpeechSynthesisUtterance(texto);
+
+    fala.lang = "pt-BR";
+
+    if(vozPortugues) fala.voice = vozPortugues;
+
+    fala.rate = 1;
+
+    fala.pitch = 1;
+
+    fala.volume = 1;
+
+    sintetizador.speak(fala);
+
+}
+
+
+try{
+
+
+    if("speechSynthesis" in window){
+
+
+        sintetizador = window.speechSynthesis;
+
+
+        function carregarVozes(){
+
+            const vozes =
+            sintetizador.getVoices();
+
+            vozPortugues =
+            vozes.find(v => v.lang === "pt-BR") ||
+            vozes.find(v => v.lang.startsWith("pt")) ||
+            null;
+
+        }
+
+
+        carregarVozes();
+
+
+        if(sintetizador.onvoiceschanged !== undefined){
+
+            sintetizador.onvoiceschanged = carregarVozes;
+
+        }
+
+
+
+        const btnAcessibilidade =
+        document.getElementById("btn-acessibilidade");
+
+
+        if(btnAcessibilidade){
+
+
+            function alternarVoz(){
+
+                vozAtivada = !vozAtivada;
+
+
+                btnAcessibilidade.classList.toggle(
+                    "is-active",
+                    vozAtivada
+                );
+
+
+                btnAcessibilidade.setAttribute(
+                    "aria-pressed",
+                    String(vozAtivada)
+                );
+
+
+                if(vozAtivada){
+
+                    falarTexto(
+                        "Acessibilidade ativada. Passe o mouse pelos elementos para ouvir a descrição."
+                    );
+
+                }else{
+
+                    sintetizador.cancel();
+
+                }
+
+            }
+
+
+            btnAcessibilidade.addEventListener(
+                "click",
+                alternarVoz
+            );
+
+
+            document.addEventListener("keydown", (e)=>{
+
+                if(
+                    document.activeElement &&
+                    ["INPUT","TEXTAREA"].includes(document.activeElement.tagName)
+                ) return;
+
+                if(e.key.toLowerCase() === "v") alternarVoz();
+
+            });
+
+
+            document.addEventListener("mouseover", (event)=>{
+
+                const elemento =
+                event.target.closest(".tts-trigger");
+
+                if(!elemento) return;
+
+                if(elemento._ttsHover) return;
+
+                elemento._ttsHover = true;
+
+                falarTexto(
+                    elemento.getAttribute("data-tts")
+                );
+
+            });
+
+
+            document.addEventListener("mouseout", (event)=>{
+
+                const elemento =
+                event.target.closest(".tts-trigger");
+
+                if(!elemento) return;
+
+                if(elemento.contains(event.relatedTarget)) return;
+
+                elemento._ttsHover = false;
+
+            });
+
+
+            document.addEventListener("focusin", (event)=>{
+
+                const elemento =
+                event.target.closest(".tts-trigger");
+
+                if(elemento) falarTexto(
+                    elemento.getAttribute("data-tts")
+                );
+
+            });
+
+
+            document.addEventListener("click", (event)=>{
+
+                const elemento =
+                event.target.closest(".tts-trigger");
+
+                if(elemento && elemento !== btnAcessibilidade){
+
+                    falarTexto(
+                        elemento.getAttribute("data-tts")
+                    );
+
+                }
+
+            });
 
 
         }

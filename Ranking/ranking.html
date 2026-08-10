@@ -21,47 +21,50 @@
 </div>
 
 <nav class="navbar scrolled">
-<a href="../index.html" class="logo">
+<a href="../index.html" class="logo tts-trigger" data-tts="Motion Verse. Ir para o início.">
 <span class="logo-mark" aria-hidden="true"></span>
 Motion<em>Verse</em>
 </a>
 <ul class="nav-links">
-<li><a href="../index.html#home">Início</a></li>
-<li><a href="../index.html#mecanica">Como Funciona</a></li>
-<li><a href="../index.html#demo">Demonstração</a></li>
-<li><a href="../index.html#equipe">Equipe</a></li>
+<li><a href="../index.html#home" class="tts-trigger" data-tts="Início.">Início</a></li>
+<li><a href="../index.html#mecanica" class="tts-trigger" data-tts="Como Funciona.">Como Funciona</a></li>
+<li><a href="../index.html#demo" class="tts-trigger" data-tts="Demonstração.">Demonstração</a></li>
+<li><a href="../index.html#equipe" class="tts-trigger" data-tts="Equipe.">Equipe</a></li>
 </ul>
 <div class="nav-actions">
-<a href="ranking.html" class="pixel-btn pixel-btn-blue" aria-current="page">🏆 Ranking</a>
-<a href="../Cadastro/cadastro.html" class="pixel-btn pixel-btn-orange">Cadastrar</a>
+<button id="btn-acessibilidade" class="access-btn tts-trigger" type="button" aria-pressed="false" aria-label="Ativar leitura por voz" data-tts="Acessibilidade ativada. Passe o mouse pelos elementos para ouvir a descrição.">
+<span class="access-icon" aria-hidden="true">♿</span><span class="access-label">Acessibilidade</span>
+</button>
+<a href="ranking.html" class="pixel-btn pixel-btn-blue tts-trigger" aria-current="page" data-tts="Ranking.">🏆 Ranking</a>
+<a href="../Cadastro/cadastro.html" class="pixel-btn pixel-btn-orange tts-trigger" data-tts="Cadastrar.">Cadastrar</a>
 </div>
 </nav>
 
 <main class="ranking-main">
 <div class="ranking-card pixel-panel reveal-zoom active">
 
-<div class="center">
+<div class="center tts-trigger" data-tts="Placar da Companhia. Ranking das Equipes. Equipes cadastradas para o Motion Verse.">
 <span class="section-label">Placar da Companhia</span>
 <h1 class="section-title">Ranking das Equipes</h1>
 <p class="section-desc">Equipes cadastradas para o Motion Verse</p>
 </div>
 
 <div class="pesquisa">
-<input type="text" id="pesquisa" placeholder="Pesquisar por equipe ou ID">
+<input type="text" id="pesquisa" class="tts-trigger" data-tts="Campo de pesquisa. Digite o nome da equipe ou o ID." placeholder="Pesquisar por equipe ou ID">
 </div>
 
 <div class="tabela pixel-panel">
 <table>
 <thead>
 <tr>
-<th>Equipe</th>
-<th>Jogador 1</th>
-<th>Jogador 2</th>
-<th>Jogador 3</th>
-<th>Jogador 4</th>
-<th>Pontos</th>
-<th>Tempo</th>
-<th>Ações</th>
+<th class="tts-trigger" data-tts="Coluna Equipe.">Equipe</th>
+<th class="tts-trigger" data-tts="Coluna Jogador 1.">Jogador 1</th>
+<th class="tts-trigger" data-tts="Coluna Jogador 2.">Jogador 2</th>
+<th class="tts-trigger" data-tts="Coluna Jogador 3.">Jogador 3</th>
+<th class="tts-trigger" data-tts="Coluna Jogador 4.">Jogador 4</th>
+<th class="tts-trigger" data-tts="Coluna Pontos.">Pontos</th>
+<th class="tts-trigger" data-tts="Coluna Tempo.">Tempo</th>
+<th class="tts-trigger" data-tts="Coluna Ações.">Ações</th>
 </tr>
 </thead>
 <tbody id="corpoTabela"></tbody>
@@ -69,8 +72,8 @@ Motion<em>Verse</em>
 </div>
 
 <div class="botoes">
-<a href="../Cadastro/cadastro.html" class="pixel-btn pixel-btn-orange">Novo Cadastro</a>
-<button class="pixel-btn pixel-btn-ghost" id="btnLimpar">Limpar Ranking</button>
+<a href="../Cadastro/cadastro.html" class="pixel-btn pixel-btn-orange tts-trigger" data-tts="Novo Cadastro.">Novo Cadastro</a>
+<button class="pixel-btn pixel-btn-ghost tts-trigger" id="btnLimpar" data-tts="Limpar Ranking. Apaga todas as equipes cadastradas.">Limpar Ranking</button>
 </div>
 
 </div>
@@ -84,22 +87,25 @@ Motion<em>Verse</em>
 
     <div class="modal-conteudo">
 
-        <h2>Área Restrita</h2>
+        <h2 class="tts-trigger" data-tts="Área Restrita.">Área Restrita</h2>
 
-        <p id="mensagemSenha">
+        <p id="mensagemSenha" class="tts-trigger" data-tts="Digite a senha.">
             Digite a senha:
         </p>
 
         <input 
         type="password" 
         id="senhaModal"
+        class="tts-trigger"
+        data-tts="Campo de senha. Digite a senha para continuar."
         placeholder="Senha">
 
         <div class="modal-botoes">
 
             <button 
             id="btnCancelarSenha"
-            class="pixel-btn pixel-btn-blue">
+            class="pixel-btn pixel-btn-blue tts-trigger"
+            data-tts="Cancelar.">
 
                 Cancelar
 
@@ -108,7 +114,8 @@ Motion<em>Verse</em>
 
             <button 
             id="btnConfirmarSenha"
-            class="pixel-btn pixel-btn-orange">
+            class="pixel-btn pixel-btn-orange tts-trigger"
+            data-tts="Confirmar.">
 
                 Confirmar
 
@@ -130,9 +137,9 @@ Motion<em>Verse</em>
 
     <div class="modal-conteudo">
 
-        <h2>Confirmar</h2>
+        <h2 class="tts-trigger" data-tts="Confirmar.">Confirmar</h2>
 
-        <p id="mensagemConfirmacao">
+        <p id="mensagemConfirmacao" class="tts-trigger" data-tts="Deseja continuar?">
             Deseja continuar?
         </p>
 
@@ -141,7 +148,8 @@ Motion<em>Verse</em>
 
             <button
             id="btnCancelarConfirmacao"
-            class="pixel-btn pixel-btn-blue">
+            class="pixel-btn pixel-btn-blue tts-trigger"
+            data-tts="Não.">
 
                 Não
 
@@ -150,7 +158,8 @@ Motion<em>Verse</em>
 
             <button
             id="btnConfirmarConfirmacao"
-            class="pixel-btn pixel-btn-orange">
+            class="pixel-btn pixel-btn-orange tts-trigger"
+            data-tts="Sim.">
 
                 Sim
 
@@ -170,7 +179,7 @@ Motion<em>Verse</em>
 
     <div class="modal-conteudo">
 
-        <h2 id="tituloMensagem">
+        <h2 id="tituloMensagem" class="tts-trigger" data-tts="Aviso.">
             Aviso
         </h2>
 
@@ -179,7 +188,8 @@ Motion<em>Verse</em>
 
         <button
         id="btnFecharMensagem"
-        class="pixel-btn pixel-btn-orange">
+        class="pixel-btn pixel-btn-orange tts-trigger"
+        data-tts="OK.">
 
             OK
 
@@ -190,8 +200,8 @@ Motion<em>Verse</em>
 </div>
 
 <footer>
-<p>© 2026 Motion<span class="foot-accent">Verse</span></p>
-<p>Projeto desenvolvido no Senac</p>
+<p class="tts-trigger" data-tts="Copyright 2026 Motion Verse.">© 2026 Motion<span class="foot-accent">Verse</span></p>
+<p class="tts-trigger" data-tts="Projeto desenvolvido no Senac.">Projeto desenvolvido no Senac</p>
 </footer>
 
 <script src="ranking.js" defer></script>
