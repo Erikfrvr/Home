@@ -189,6 +189,10 @@ button:focus-visible {
   box-shadow: none;
 }
 
+.pixel-btn[hidden] {
+  display: none;
+}
+
 .pixel-btn-orange {
   background: var(--senac-orange);
   color: var(--pixel-shadow);
@@ -665,13 +669,6 @@ button:focus-visible {
   }
 }
 
-@keyframes scrollcue {
-  0% { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  50.1% { transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
-}
-
 section {
   padding: 110px 6%;
   position: relative;
@@ -932,6 +929,10 @@ section {
   font-size: 0.58rem;
   color: var(--senac-orange-light);
   margin-bottom: 14px;
+}
+
+.fighter-badge[hidden] {
+  display: none;
 }
 
 .fighter-badge {
